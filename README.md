@@ -25,9 +25,9 @@ Curriculum for the **Health AI in R Workshop** at NTNU
 * Introduction to survival analysis
 
 ## Module 5: Introduction to AI and Machine Learning in R
-	* Basics of machine learning
-	* Overview of key packages (caret, randomForest, xgboost)
-	* Data preprocessing for machine learning
+* Basics of machine learning
+* Overview of key packages (caret, randomForest, xgboost)
+* Data preprocessing for machine learning
 
 Activity 1: Application with sensitive data
 Activity 2: Machine learning project
