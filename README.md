@@ -33,7 +33,7 @@ Activity 1: Application with sensitive data
 Activity 2: Machine learning project
 
 
-Learning outcomes 
+Learning outcomes  
 •	Set up and navigate the RStudio environment.
 •	Familiarize with R syntax and core concepts.
 •	Define sensitive data and understand the ethical considerations for its analysis
@@ -46,4 +46,3 @@ Learning outcomes
 •	Understand data preprocessing steps required for machine learning tasks.
 •	Build a simple predictive model (classification or regression) from scratch.
 •	Evaluate and interpret the performance of the model using appropriate metrics.
-![image](https://github.com/user-attachments/assets/e782da10-c9f7-40db-aadd-bb15a2520540)
