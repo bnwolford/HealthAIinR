@@ -1,7 +1,7 @@
 # HealthAIinR
 Curriculum for the Health AI in R Workshop at NTNU 
 
-![logo](healthAI_course_logo_v2.jpg)
+<img src="healthAI_course_logo_v2.jpg" alt="Course logo" width="300" height="200">
 
 ## Module 1: Introduction to R 
 * Basics of R programming
