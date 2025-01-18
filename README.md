@@ -2,7 +2,7 @@
 
 <img src="healthAI_course_logo_v2.jpg" alt="Course logo" height="300">
 
-Register [here](https://forms.gle/1DQ2g1BGHNpLbdBW9)
+Register [here](https://forms.office.com/e/GpdEnJH7wm)
 
 Curriculum for the **Health AI in R Workshop** at NTNU 
 
