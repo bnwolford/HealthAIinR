@@ -2,9 +2,9 @@
 
 <img src="healthAI_course_logo_v3.jpg" alt="Course logo" height="300">
 
-Register [here](https://forms.office.com/e/GpdEnJH7wm)
-Course leader: Brooke Wolford, PhD <a href= "mailto:brookewo@ntnu.no">brookewo@ntnu.no</a>
-Guest speaker: Kelly Sovacool, PhD
+Register [here](https://forms.office.com/e/GpdEnJH7wm)  
+Course leader: Brooke Wolford, PhD <a href= "mailto:brookewo@ntnu.no">brookewo@ntnu.no</a>  
+Guest instructor: Kelly Sovacool, PhD  
 
 Curriculum for the **Health AI in R Workshop** at NTNU 
 
