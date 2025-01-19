@@ -53,3 +53,6 @@ Learning outcomes
 •	Understand data preprocessing steps required for machine learning tasks.
 •	Build a simple predictive model (classification or regression) from scratch.
 •	Evaluate and interpret the performance of the model using appropriate metrics.
+
+# License
+All materials hosted here are subject to the licenses described in the [LICENSE file](LICENSE.md).
