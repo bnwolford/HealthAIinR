@@ -22,7 +22,7 @@ license terms.
 
 Under the following terms:
 
-* **Attribution**---You must give appropriate credit (mentioning that
+* **Attribution**---You must give appropriate credit, mentioning that
   your work is derived from work that is Copyright © Health AI in R Course Instructors and, where practical, linking to
   this repository, provide a [link to the
   license][cc-by-human], and indicate if changes were made. You may do
