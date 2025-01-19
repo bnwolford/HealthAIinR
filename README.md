@@ -9,7 +9,7 @@ Guest instructor: [Kelly Sovacool, PhD](https://github.com/kelly-sovacool)
 This 1.5-day workshop at NTNU in Trondheim, Norway is geared towards students with beginning computational skills and an interest in AI for health research. Students will use the HUNT Cloud computational environment and learn to work with sensitive health data. We will focus on the use of the R, a free open source programming language used for data analytics and statistical analysis. Students will learn the basics of object-oriented programming, manipulating data frames, data visualization, and statistical learning.
 
 
-Curriculum for the **Health AI in R Workshop** at NTNU 
+# Curriculum for the **Health AI in R Workshop** at NTNU 
 
 ## Module 1: Introduction to R 
 * Basics of R programming
