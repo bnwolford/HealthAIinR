@@ -21,7 +21,9 @@ This 1.5-day workshop at NTNU in Trondheim, Norway is geared towards students wi
 * Data frames, lists, and matrices
 * Data manipulation with dplyr and tidyr
 
-## Activity 1: Paired programming exercise to read and clean sensitive data  
+## Activity 1: Paired programming exercise
+* Read in and sensitive data  
+* Basic data cleaning   
 
 ## Module 3: Data visualization with ggplot 
 * Basic plotting with ggplot2
