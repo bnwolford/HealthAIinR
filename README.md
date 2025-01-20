@@ -21,6 +21,8 @@ This 1.5-day workshop at NTNU in Trondheim, Norway is geared towards students wi
 * Data frames, lists, and matrices
 * Data manipulation with dplyr and tidyr
 
+## Activity 1: Paired programming exercise to read and clean sensitive data  
+
 ## Module 3: Data visualization with ggplot 
 * Basic plotting with ggplot2
 * Customizing plots
@@ -31,13 +33,20 @@ This 1.5-day workshop at NTNU in Trondheim, Norway is geared towards students wi
 * ANOVA and linear regression
 * Introduction to survival analysis
 
+## Activity 2: Application with sensitive data  
+* Exploratory data analysis with sensitive data
+* Use of classic statistical methods
+
 ## Module 5: Introduction to AI and Machine Learning in R
 * Basics of machine learning
 * Overview of key packages (caret, randomForest, xgboost)
 * Data preprocessing for machine learning
 
-Activity 1: Application with sensitive data
-Activity 2: Machine learning project
+## Activity 3: Machine learning project
+* Building a predictive model (e.g., classification or regression)
+* Evaluating model performance
+* Model interpretation and visualization
+
 
 
 Learning outcomes  
