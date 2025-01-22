@@ -69,11 +69,3 @@ Learning outcomes
 
 # License
 All materials hosted here are subject to the licenses described in the [LICENSE file](LICENSE.md).
-
-# Resources
-Other Resources for your learning journey.
-* https://github.com/zenalapp/teach-yourself-r/wiki
-* https://github.com/GWC-DCMB/GWC-DCMB
-* https://github.com/um-dang
-* https://www.r-project.org/other-docs.html
-* https://adv-r.hadley.nz/
