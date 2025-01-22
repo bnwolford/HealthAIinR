@@ -6,7 +6,7 @@ August 11-12, 2025
 Register [here](https://forms.office.com/e/GpdEnJH7wm)  
 Course leader: [Brooke Wolford, PhD](https://www.ntnu.edu/employees/brookewo) <a href= "mailto:brookewo@ntnu.no">brookewo@ntnu.no</a>  
 Guest instructor: [Kelly Sovacool, PhD](https://github.com/kelly-sovacool)  
-Virtual zoom onboarding: June 24, 14:00 CET
+Virtual zoom meeting for HUNT Cloud onboarding: June 24, 14:00 CET
 
 This 1.5-day workshop at NTNU in Trondheim, Norway is geared towards students with beginning computational skills and an interest in AI for health research. Students will use the HUNT Cloud computational environment and learn to work with sensitive health data. We will focus on the use of the R, a free open source programming language used for data analytics and statistical analysis. Students will learn the basics of object-oriented programming, manipulating data frames, data visualization, and statistical learning.
 
