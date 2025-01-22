@@ -2,7 +2,7 @@
 
 <img src="healthAI_course_logo_v3.jpg" alt="Course logo" height="300">
 
-August 11-12, 2025
+August 11-12, 2025  
 Register [here](https://forms.office.com/e/GpdEnJH7wm)  
 Course leader: [Brooke Wolford, PhD](https://www.ntnu.edu/employees/brookewo) <a href= "mailto:brookewo@ntnu.no">brookewo@ntnu.no</a>  
 Guest instructor: [Kelly Sovacool, PhD](https://github.com/kelly-sovacool)  
