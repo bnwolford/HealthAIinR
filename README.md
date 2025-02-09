@@ -2,13 +2,14 @@
 
 <img src="healthAI_course_logo_v3.jpg" alt="Course logo" height="300">
 
-August 11-12, 2025  
-Register [here](https://forms.office.com/e/GpdEnJH7wm)  
-Course leader: [Brooke Wolford, PhD](https://www.ntnu.edu/employees/brookewo) <a href= "mailto:brookewo@ntnu.no">brookewo@ntnu.no</a>  
-Guest instructor: [Kelly Sovacool, PhD](https://github.com/kelly-sovacool)  
-Virtual zoom meeting for HUNT Cloud onboarding: June 24, 14:00 CET
 
-This 1.5-day workshop at NTNU in Trondheim, Norway is geared towards students with beginning computational skills and an interest in AI for health research. Students will use the HUNT Cloud computational environment and learn to work with sensitive health data. We will focus on the use of the R, a free open source programming language used for data analytics and statistical analysis. Students will learn the basics of object-oriented programming, manipulating data frames, data visualization, and statistical learning.
+⏰ Date and Time: 11:00-17:45 CET on 11 August with an optional course dinner at 18:30; 9:00-15:00 CET on 12 August 
+Register [here](https://forms.office.com/e/GpdEnJH7wm)  
+Course leader: [Brooke Wolford, PhD](https://www.ntnu.edu/employees/brookewo) [(brookewo@ntnu.no)](mailto:brookewo@ntnu.no)  
+Guest instructor: [Kelly Sovacool, PhD](https://github.com/kelly-sovacool)  
+Virtual zoom meeting for HUNT Cloud onboarding: June 24, 14:00 CET  
+
+This 1.5-day workshop at NTNU in Trondheim, Norway is geared towards students with beginning computational skills and an interest in AI for health research. Students will use the HUNT Cloud computational environment and learn to work with sensitive health data. We will focus on the use of the R, a free open source programming language used for data analytics and statistical analysis. Students will learn the basics of object-oriented programming, manipulating data frames, data visualization, and statistical learning. We are prioritizing PhD students and individuals affiliated with the Digital Life Norway Research School.
 
 
 # Curriculum for the **Health AI in R Workshop** at NTNU 
