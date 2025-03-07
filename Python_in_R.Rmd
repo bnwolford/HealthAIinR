@@ -1,0 +1,58 @@
+---
+title: "Python in R"
+author: "Brooke Wolford"
+date: "2025-03-07"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(reticulate)
+library(tidyverse)
+```
+
+You can read more about using Pythin in R here: https://www.r-bloggers.com/2020/04/how-to-run-pythons-scikit-learn-in-r-in-5-minutes/
+
+You can create a python environment with the packages you want like numpy and scikit-learn.
+
+In R Console, you can run python interactively using repl_python(). You will see >>> indicating you are in Python Mode.
+
+```{r}
+#list conda environments
+reticulate::conda_list()
+
+#print versions
+py_config()
+```
+
+
+Now we are going to use a python code chunk
+
+```{python3}
+
+#is python working
+1+1
+
+#import packages
+import numpy as np
+import pandas as pd
+import matplotlib as plt
+
+#for scikit-learn module we usually import specific class
+from sklearn.ensemble import RandomForestClassifier
+
+#test numpy
+np.arange(1,10)
+
+#tun a test random forest
+clf = RandomForestClassifier(random_state=0)
+X = [[ 1,  2,  3],  # 2 samples, 3 features
+     [11, 12, 13]]
+y = [0, 1]  # classes of each sample
+clf.fit(X, y)
+clf.predict(X)  # predict classes of the training data
+
+
+
+
+```
