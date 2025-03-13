@@ -1,0 +1,3 @@
+Hello world.
+Ready to learn R?
+Now you are using Terminal!
