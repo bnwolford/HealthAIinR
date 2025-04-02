@@ -21,12 +21,65 @@ library(tidyverse)
 #The tidyverse package is an “umbrella-package” that installs several packages useful for data analysis which work together well such as tidyr, dplyr, ggplot2, tibble, etc.
 ```
 
-Now, let's read in our data. I like to use the data.table package which has a function `fread()`. However, you can also use base r function  `read_csv()`. 
+Now, let's read in our data. Each row holds the observations for just one patient. Each column holds the inflammation measured in a day, so we have a set of values in successive days.
+
+I like to use the data.table package which has a function `fread()`. However, you can also use base r function `read_csv()`. We will also inspect our data to get a sense of what it looks like.
 
 ```{r} 
 
-my_data<-read_csv(file="path/inflammation-01.csv",header=FALSE)
+dat<-read_csv(file="path/inflammation-01.csv",header=FALSE)
 
 #what do you think the header option does? how can we find out? what would happen if we did not use it?
 
+head(dat)
+
+dim(dat)
+
+nrow(dat)
+
+names(dat)
+
+str(dat)
+
+summary(dat)
+
 ```
+
+Like many programming languages, we can use indices to specify a certain row and column. The first value in brackets is row, and the second is column. R starts indices at 1, but some other langauges use 0, so be mindful of this.
+
+If we want to select more than one row or column, we can use the function c, which combines the values you give it into one vector or list.
+
+If we want to select contiguous rows or columns, we can use the colon.
+
+```{r}
+
+#this will pull out the value in the 30th row and 20th column
+dat[30,20]
+
+dat[c(1, 3, 5), c(10, 20)]
+
+#let's check what 1:5 does
+1:5
+
+#now let's use it in row and column space
+dat[1:5,1:5]
+
+```
+
+If we leave the row or column space open, it means we wnt all of that row or column.
+
+```{r}
+
+#All columns from row 3
+dat[3,]
+
+# All rows from column 16-18
+dat[, 16:18]
+
+#what do you think happens if we leave both values empty
+dat[,]
+
+```
+
+In tidyverse, we don't have to worry so much about indices. We can use column names
+
