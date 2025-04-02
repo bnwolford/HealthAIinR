@@ -1,0 +1,34 @@
+---
+title: "Activity 1"
+author: "Brooke Wolford"
+date: "2025-04-02"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Activity 1
+
+Use information from Module 1 and Module 2 to read in sensitive data 
+
+```{r}
+##call libraries
+library(data.table)
+library(tidyverse)
+
+data_dir<-"/path/to/MIMIC/"
+
+#read in PATIENTS.csv
+
+patdat<-fread(paste0(data_dir,"PATIENTS.csv"))
+
+head(patdat)
+
+#key for all diagnoses
+diagnoses<-fread(paste0(data_dir,"D_ICD_DIAGNOSES.csv"))
+
+#patient diagnoses
+diagdat<-fread(paste0(data_dir,"DIAGNOSES_ICD.csv"))
+```
