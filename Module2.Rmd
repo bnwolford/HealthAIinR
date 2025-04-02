@@ -1,0 +1,32 @@
+---
+title: "Module 2"
+author: "Brooke Wolford"
+date: "2025-04-02"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Module 2: Data Handling in R
+
+This lesson is based on content from [Software Carpentry](https://swcarpentry.github.io/r-novice-inflammation/01-starting-with-data.html).
+
+First, we need to load in the libraries we will use.
+
+```{r}
+library(data.table)
+library(tidyverse)
+#The tidyverse package is an “umbrella-package” that installs several packages useful for data analysis which work together well such as tidyr, dplyr, ggplot2, tibble, etc.
+```
+
+Now, let's read in our data. I like to use the data.table package which has a function `fread()`. However, you can also use base r function  `read_csv()`. 
+
+```{r} 
+
+my_data<-read_csv(file="path/inflammation-01.csv",header=FALSE)
+
+#what do you think the header option does? how can we find out? what would happen if we did not use it?
+
+```
