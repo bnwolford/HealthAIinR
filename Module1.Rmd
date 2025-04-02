@@ -45,7 +45,10 @@ z<-1L
 class(z)
 ```
 
+It is important that we name variables in a way that other users and our future selves will understand.  Today, most R programmers 1) start variable names with lower case letters, 2) separate words in variable names with underscores, and 3) use only lowercase letters, underscores, and numbers in variable names. The [Tidyverse Style Guide](https://style.tidyverse.org/syntax.html) includes a section on this.
+
 The most basic type of R object is a vector. Vectors can only contain objects of the same class. A list is represented as a vector but can contain objects of different classes.
+
 ```{r}
 
 #initialize a vector
