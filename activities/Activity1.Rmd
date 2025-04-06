@@ -1,0 +1,41 @@
+---
+title: "Activity 1"
+author: "Brooke Wolford"
+date: "2025-04-02"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Activity 1
+
+Use information from Module 1 and Module 2 to read in sensitive data 
+
+The Medical Information Mart for Intensive Care III (MIMIC-III) dataset is a large, de-identified and publicly-available collection of medical records. This was published in 2016. We are using the MIMIC-III Clinical Database Demo which is open access. It is downloadable from PhysioNet, but I've already put it on HUNT Cloud. It is only for 100 patients, so we have a situation with "big-p, little-n” denoted as p >> n which means there are many more predictors than samples in the data.
+
+The newest data set, MIMIC-IV, is also avaialble for certain users that sign the data use agreement and document human ethics training. Physionet calls this "Credientialed Access."
+
+
+```{r}
+##call libraries
+library(data.table)
+library(tidyverse)
+
+data_dir<-"/path/to/MIMIC/"
+
+#read in PATIENTS.csv
+
+patdat<-fread(paste0(data_dir,"PATIENTS.csv"))
+
+head(patdat)
+
+#key for all diagnoses
+diagnoses<-fread(paste0(data_dir,"D_ICD_DIAGNOSES.csv"))
+
+#patient diagnoses
+diagdat<-fread(paste0(data_dir,"DIAGNOSES_ICD.csv"))
+```
+
+In the future, you may be interested in using synthetic data which avoids some of the limitations and restrictions of senstiive data. You may be interested in [Synthea](https://github.com/synthetichealth/synthea). This is a Synthetic Patient Population Simulator. The goal is to output synthetic, realistic (but not real), patient data and associated health records in a variety of formats.

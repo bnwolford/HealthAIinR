@@ -1,0 +1,166 @@
+---
+title: "Module 0"
+author: "Brooke Wolford"
+date: "2025-01-19"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Module 0: Introduction to R and Terminal
+
+* RMarkdown for reproducible research
+* Basics of R programming
+* Understanding the RStudio IDE
+* Introduction to Terminal
+
+Content for this Module is derived from
+* https://bookdown.org/rdpeng/rprogdatascience/r-nuts-and-bolts.html
+* https://hbctraining.github.io/Intro-to-R-flipped/lessons/04_introR_packages.html
+
+### R Markdown
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. 
+
+### Defining variables
+R has five basic or “atomic” classes of objects:
+- character
+- numeric (real numbers)
+- integer
+- complex
+- logical (True/False)
+
+The arrow is used as the assignment operator. 
+
+R objects can have attributes such as class, dimensions, length, and names.
+
+```{r}
+#this hashtag means we have "commented out" this line, so it will not run
+
+#let's define the variable x 
+x<-5
+
+x #auto printing occurs
+print(x) #explicit printing
+class(x)
+
+#we can coerce an object from one class to another
+y<-as.integer(x)
+class(y)
+
+z<-1L
+class(z)
+```
+
+The most basic type of R object is a vector. Vectors can only contain objects of the same class. A list is represented as a vector but can contain objects of different classes.
+```{r}
+
+#initialize a vector
+a<-vector("numeric",10)
+print(a)
+
+#define a vector with c() function
+b<-c(1,2,3)
+print(b)
+class(a)
+class(b)
+
+#create a data frame
+x<-1:10
+y<-rnorm(10)
+df<-data.frame(x,y)
+
+#what are the dimensions of the data frame
+dim(df)
+
+#what are the names of the data frame?
+names(df)
+
+```
+
+Factors are used to represent categorical data and may be ordered or unordered. These can be useful when you are using regression models.
+```{r}
+
+x<-factor(c("male","female","male","female","female","female"))
+
+#print the factor names of x
+factor(x)
+
+#how many of each factor are in the vector x
+table(x)
+
+
+
+```
+
+Missing values are denoted by NA or NaN in R. The function `is.na()` will return a logical vector indicating which values are NA. If you want to count the number of NA values using `table()` you will need to use `useNA="always"` in the function. If you want to calculate a summary statistic such as `mean()` you have to remove the NA from the vector with `na.rm=TRUE`.
+
+```{r}
+
+#let's add an NA value to our factors
+y<-factor(c(x,NA))
+class(y)
+
+is.na(y)
+
+table(y,useNA="always")
+
+z<-c(1,20,13,NA,45)
+mean(z) 
+mean(z,na.rm=TRUE)
+
+```
+
+### Libraries and functions
+Packages are collections of R functions, data, and compiled code in a well-defined format, created to add specific functionality. There are 10,000+ user contributed packages on CRAN. The directories in R where the packages are stored are called the libraries.
+
+```{r}
+
+#what libraries are loaded in the environment?
+sessionInfo()
+
+#let's install a package
+#install.packages("ggplot2")
+
+#now we call the package
+library(ggplot2)
+
+#now we can use functions from the ggplot2 package
+ggplot(df,aes(x,y)) + geom_point()
+
+```
+
+Currently we are operating within RStudio. This is an "Integrated Development Environment" or IDE. It provides a more simplified way to interact with the R programming language. You can see your code, an R console, see the variables in your environment, and see a graphical user interface (GUI) of your file system. 
+
+You can also see a tab for Terminal. A terminal is a GUI window that takes commands and shows output. This user interface where users type commands and see results on the screen is called a command line interface (CLI). 
+
+If you want to use R interactively in the Terminal instead of in the RStudio IDE, you can launch a session by typing `R`. We can also send commands to the Terminal by using the `system()` command in R. Here, I am listing the contents of the current working directory with the bash command `ls`. 
+
+```{r}
+
+system("ls")
+
+```
+
+Now let's open Terminal and practice there. We can access a Terminal 1) in RStudio; 2) by opening an application on our computer; or 3) by using the HUNT Cloud Workbench and selecting Terminal.
+
+HUNT Cloud uses the Linux operating system called Ubuntu. The shell is the software the interprets and executes the commands we type. Common shells are called bash, sh, csh, and tcsh. There are several basic Linux Terminal commands you should know. Copy and paste or type the following commands into the Terminal to see what they do.
+
+
+```
+ls
+pwd
+mkdir
+cd
+less test.txt
+cat test.txt
+grep "R" test.txt
+echo "5"
+cp test.txt test2.txt
+mv test2.txt test3.txt
+rm test3.txt
+R
+```
