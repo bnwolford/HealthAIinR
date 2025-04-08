@@ -88,7 +88,11 @@ ggplot(df,aes(x,y)) + geom_point()
 
 ```
 
+[Object-oriented programming](https://www.turing.com/kb/object-oriented-programming-help-the-developers-to-code-better) is a programming paradigm based on the concept of breaking down a problem or system into objects.
 
+[Functional programming](https://www.turing.com/kb/introduction-to-functional-programming) is a declarative programming paradigm style where one applies pure functions in sequence to solve complex problems. Functions take an input value and produce an output value without being affected by the program.
+
+R lends itself well to a style of problem solving centered on functions so it can be used as a [functional language](https://adv-r.hadley.nz/oo.html). However, [object orienting programm](https://adv-r.hadley.nz/oo.html) is also possible in R, using the S3 system for example. These are more advanced computer science concepts which aren't required to understand, but are good to be aware of.
 
 
 
