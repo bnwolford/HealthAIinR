@@ -117,6 +117,13 @@ mean(z,na.rm=TRUE)
 ### Libraries and functions
 Packages are collections of R functions, data, and compiled code in a well-defined format, created to add specific functionality. There are 10,000+ user contributed packages on CRAN. The directories in R where the packages are stored are called the libraries.
 
+Normally we can install packages in R using `install.packages()` function. However, the way the HUNT Cloud workbench is setup, we need to install packages via the Terminal using [conda](https://docs.conda.io/projects/conda/en/stable/user-guide/tasks/manage-pkgs.html). Go back to the Terminal in launcher and execute the following commands 
+
+```{bash}
+conda activate r-base
+conda install ggplot2
+```
+
 ```{r}
 
 #what libraries are loaded in the environment?
@@ -124,6 +131,7 @@ sessionInfo()
 
 #let's install a package
 #install.packages("ggplot2")
+
 
 #now we call the package
 library(ggplot2)
