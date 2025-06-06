@@ -17,6 +17,12 @@ git clone https://github.com/bnwolford/HealthAIinR.git
 5. Press the blue plus sign on the top left. A new launcher appears. Now select RStudio, the blue circle with a white R.
 6. In the bottom left panel you can navigate the file system like in a regular computer. Select workbench, then HealthAIinR, then modules. Click on Module0.Rmd. This is an R Markdown document. It will open in the top left of the screen.
 
+7. If you set this up a while ago, pull the repository to see the updated code. In Terminal, execute the following commands:
+```
+cd /mnt/work/workbench/$USER/HealthAIinR
+git pull
+```
+
 # Module 0
 An introduction to R and Unix. Designed to run each block interactively in RStudio rather than knit the whole document together. In the sections that are grey and start with ```{r} these are code blocks of the document. Hit the green play button to execute the code in that block. Read through and try to understand what is happening.  
 
