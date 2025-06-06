@@ -159,17 +159,16 @@ Now let's open Terminal and practice there. We can access a Terminal 1) in RStud
 HUNT Cloud uses the Linux operating system called Ubuntu. The shell is the software the interprets and executes the commands we type. Common shells are called bash, sh, csh, and tcsh. There are several basic Linux Terminal commands you should know. Copy and paste or type the following commands into the Terminal to see what they do.
 
 
-```
-ls
-pwd
-mkdir
-cd
-less test.txt
-cat test.txt
-grep "R" test.txt
-echo "5"
-cp test.txt test2.txt
-mv test2.txt test3.txt
-rm test3.txt
-R
-```
+`ls` 
+`pwd` 
+`mkdir`
+`cd`
+`less test.txt`
+`cat test.txt`
+`grep "R" test.txt`
+`echo "5"`
+`cp test.txt test2.txt`
+`mv test2.txt test3.txt`
+`rm test3.txt`
+`R`
+
