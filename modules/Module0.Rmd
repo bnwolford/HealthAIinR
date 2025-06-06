@@ -149,7 +149,8 @@ We can also send commands to the Terminal by using the `system()` command in R. 
 
 ```{r}
 
-system("ls")
+# Unfortunately this won't work in RStudio workbench on HUNT Cloud, so I've commented it out
+#system("ls")
 
 ```
 
