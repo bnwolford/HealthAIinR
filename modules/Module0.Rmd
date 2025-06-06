@@ -143,7 +143,9 @@ Currently we are operating within RStudio. This is an "Integrated Development En
 
 You can also see a tab for Terminal. A terminal is a GUI window that takes commands and shows output. This user interface where users type commands and see results on the screen is called a command line interface (CLI). 
 
-If you want to use R interactively in the Terminal instead of in the RStudio IDE, you can launch a session by typing `R`. We can also send commands to the Terminal by using the `system()` command in R. Here, I am listing the contents of the current working directory with the bash command `ls`. 
+If you want to use R interactively in the Terminal instead of in the RStudio IDE, you can launch a session by typing `R`. 
+
+We can also send commands to the Terminal by using the `system()` command in R. Here, I am listing the contents of the current working directory with the bash command `ls`. Unfortunately, this also does not work in HUNT Cloud Workbench, but would work when using RStudio on your local computer.
 
 ```{r}
 
