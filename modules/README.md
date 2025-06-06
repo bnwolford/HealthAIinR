@@ -25,3 +25,9 @@ An introduction to R and Unix. Designed to run each block interactively in RStud
 # :warning: Still under maintenance  
 [Module 1](https://github.com/bnwolford/HealthAIinR/blob/main/modules/Module1.Rmd)  
 [Module 2](https://github.com/bnwolford/HealthAIinR/blob/main/modules/Module2.Rmd)  
+
+I will add new content over the summer. If you want to see this content on HUNT Cloud, go back to your Terminal and execute these commands, remembering to replace $USER.   
+```
+cd /mnt/work/workbench/$USER/HealthAIinR
+git pull
+```  
