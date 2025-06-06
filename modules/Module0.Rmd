@@ -123,7 +123,9 @@ Packages are collections of R functions, data, and compiled code in a well-defin
 sessionInfo()
 
 #let's install a package
-#install.packages("ggplot2")
+if(!requireNamespace("ggplot2", quietly = TRUE)) {
+  install.packages("ggplot2")
+}
 
 #now we call the package
 library(ggplot2)

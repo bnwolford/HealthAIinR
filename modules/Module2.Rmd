@@ -16,6 +16,11 @@ This lesson is based on content from [Software Carpentry](https://swcarpentry.gi
 First, we need to load in the libraries we will use.
 
 ```{r}
+#let's install a package
+if(!requireNamespace(c("data.table","tidyverse"), quietly = TRUE)) {
+  install.packages(c("data.table","tidyverse"))
+}
+#now we call the package
 library(data.table)
 library(tidyverse)
 #The tidyverse package is an “umbrella-package” that installs several packages useful for data analysis which work together well such as tidyr, dplyr, ggplot2, tibble, etc.
@@ -26,8 +31,11 @@ Now, let's read in our data. Each row holds the observations for just one patien
 I like to use the data.table package which has a function `fread()`. However, you can also use base r function `read_csv()`. We will also inspect our data to get a sense of what it looks like.
 
 ```{r} 
-
-dat<-read_csv(file="path/inflammation-01.csv",header=FALSE)
+#let's download data 
+if(!file.exists("data/r-novice-inflammation-data.zip")){
+  download.file("https://swcarpentry.github.io/r-novice-inflammation/data/r-novice-inflammation-data.zip", destfile = "data/r-novice-inflammation-data.zip", mode = "wb")
+}
+dat<-read.csv(unz("data/r-novice-inflammation-data.zip", "data/inflammation-01.csv"),header=FALSE)
 
 #what do you think the header option does? how can we find out? what would happen if we did not use it?
 
