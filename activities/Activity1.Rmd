@@ -15,7 +15,7 @@ Use information from Module 1 and Module 2 to read in sensitive data
 
 The Medical Information Mart for Intensive Care III (MIMIC-III) dataset is a large, de-identified and publicly-available collection of medical records. This was published in 2016. We are using the MIMIC-III Clinical Database Demo which is open access. It is downloadable from PhysioNet, but I've already put it on HUNT Cloud. It is only for 100 patients, so we have a situation with "big-p, little-n” denoted as p >> n which means there are many more predictors than samples in the data.
 
-The newest data set, MIMIC-IV, is also avaialble for certain users that sign the data use agreement and document human ethics training. Physionet calls this "Credientialed Access."
+The newest data set, MIMIC-IV, is also available for certain users that sign the data use agreement and document human ethics training. Physionet calls this "Credientialed Access."
 
 
 ```{r}

@@ -13,6 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 #### Sources
 Content for this Module is derived from:
 * https://swcarpentry.github.io/r-novice-gapminder/08-plot-ggplot2.html
+* https://www.datanovia.com/en/lessons/ggplot-violin-plot/
 
 ChatGPT was used in the creation of examples and explanations.
 
@@ -25,7 +26,7 @@ By the end of this session, learners will be able to:
 	
 ### Introduction
 
-The "gg" in `ggplot2` stands for grammar of graphics. The plots are built in layers and you can additively string together functions with `+` to add layers and customize your plots.
+The "gg" in `ggplot2` stands for grammar of graphics. The plots are built in layers and you can additively string together functions with `+` to add layers and customize your plots. The key part of making our plot is to tell ggplot how we want to visually represent the data. We do this by adding a new layer to the plot using one of the geom functions.
 
 ```{r}
 
@@ -74,6 +75,91 @@ ggplot(data=dat, aes(x = Group)) +
   geom_bar(fill = "darkorange") + theme_bw()
 
 ```
+
+### Boxplots
+
+```{r}
+
+# boxplots show the median and interquartile range of a distribution
+ggplot(data = dat, aes(x = Gender_v2, y = BloodPressure)) +
+  geom_boxplot() 
+
+# we can also show the raw data points underlying the distributions by layering on geom_point()
+
+ggplot(data = dat, aes(x = Gender_v2, y = BloodPressure)) +
+  geom_boxplot() + geom_point() + theme_bw()
+
+
+# It’s important to note that each layer is drawn on top of the previous layer, so we have to pay attention to order.
+#In this example, the boxplot has been drawn on top of the points. This doesn't really represent the data well.
+
+ggplot(data = dat, aes(x = Gender_v2, y = BloodPressure)) +
+  geom_point() + geom_boxplot() + theme_bw()
+
+# geom_jitter() is a common way to present a box plot and the raw data
+
+ggplot(data = dat, aes(x = Gender_v2, y = BloodPressure)) +
+  geom_boxplot() + geom_jitter()
+
+# Violin plots are also a way to show the distribution of the data in addition to the raw data and the quartiles
+
+ggplot(data = dat, aes(x = Gender_v2, y = BloodPressure)) +
+  geom_violin() + geom_jitter() + geom_boxplot(width = 0.2)
+
+# Now let's add some color and set a theme; note we have to add a fill aesthetic
+
+ggplot(data = dat, aes(x = Gender_v2, y = BloodPressure,fill=Gender_v2)) +
+  geom_violin() + geom_jitter() + geom_boxplot(width = 0.2) +
+  scale_fill_manual(values=c("orchid2","lightblue")) +
+  theme_bw()
+
+# Using fill created a legend (by default on the right side of the plot), but we don't need that since the x-axis is also labelled, let's drop it
+ggplot(data = dat, aes(x = Gender_v2, y = BloodPressure,fill=Gender_v2)) +
+  geom_violin() + geom_jitter() + geom_boxplot(width = 0.2) +
+  scale_fill_manual(values=c("orchid2","lightblue")) +
+  theme_bw() + theme(legend.position="none")
+
+# Let's rename the x-axis since it defaulted to the name of our variable; let's also spell out Female and Male
+# let's also make the violin look a little nicer with trim=FALSE
+ggplot(data = dat, aes(x = Gender_v2, y = BloodPressure,fill=Gender_v2)) +
+  geom_violin(trim=FALSE) + geom_jitter() + geom_boxplot(width = 0.2) +
+  scale_fill_manual(values=c("orchid2","lightblue")) +
+  theme_bw() + theme(legend.position="none") + 
+  xlab("Sex") + scale_x_discrete(labels = c("Female","Male"))
+                                 
+# What if we want to stratify by the Treatment Group? Note we bring back the legend by changing that theme layer
+ggplot(data = dat, aes(x = Gender_v2, y = BloodPressure)) +
+  geom_violin(aes(color=Group),trim=FALSE,position = position_dodge(0.9)) + 
+    geom_jitter(aes(color=Group),position = position_dodge(0.9)) + 
+    geom_boxplot(aes(color=Group),width = 0.2, position = position_dodge(0.9)) +
+  theme_bw() + theme(legend.position="bottom") +
+  xlab("Sex") + scale_x_discrete(labels = c("Female","Male"))
+
+# R will use a default color palette, but we can also customize this; notice this time we use scale_color_manual instead of scale_fill_manual
+# Two different grouping variables are used: Sex on x-axis and Group as line color (legend variable).
+# The space between the grouped plots is adjusted using the function position_dodge().
+
+ggplot(data = dat, aes(x = Gender_v2, y = BloodPressure)) +
+  geom_violin(aes(color=Group),trim=FALSE,position = position_dodge(0.9)) + 
+    geom_jitter(aes(color=Group),position = position_dodge(0.9)) + 
+    geom_boxplot(aes(color=Group),width = 0.2, position = position_dodge(0.9)) +
+  theme_bw() + theme(legend.position="bottom") +
+  xlab("Sex") + scale_x_discrete(labels = c("Female","Male")) +
+  scale_color_manual(values=c("goldenrod3","darkblue","darkgreen"))
+
+# Alternatively, we can use facets to stratify the data
+ggplot(data = dat, aes(x = Gender_v2, y = BloodPressure)) +
+  geom_violin(aes(color=Group),trim=FALSE,position = position_dodge(0.9)) + 
+    geom_jitter(aes(color=Group),position = position_dodge(0.9)) + 
+    geom_boxplot(aes(color=Group),width = 0.2, position = position_dodge(0.9)) +
+  theme_bw() + theme(legend.position="bottom") +
+  xlab("Sex") + scale_x_discrete(labels = c("Female","Male")) +
+  facet_wrap(~Group)
+
+# The facet_wrap layer took a “formula” as its argument, denoted by the tilde (~). This tells R to draw a panel for each unique value in the Group column.
+
+```
+
 
 
 ### Exporting the plot
