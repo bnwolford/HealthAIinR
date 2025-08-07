@@ -23,11 +23,11 @@ cd /mnt/work/workbench/$USER/HealthAIinR
 git pull
 ```
 
-# Module 0
-An introduction to R and Unix. Designed to run each block interactively in RStudio rather than knit the whole document together. In the sections that are grey and start with ```{r} these are code blocks of the document. Hit the green play button to execute the code in that block. Read through and try to understand what is happening.  
+8. To save some time later, let's install some packages. 
 
-[Module0.Rmd](https://github.com/bnwolford/HealthAIinR/blob/main/modules/Module0.Rmd)  
-
+```
+conda install r-ggplot2, r-tidymodels, r-dlpyr, r-tidyr, r-readr
+```
 
 # Course Material :warning: Still under maintenance  
 [Module 1](https://github.com/bnwolford/HealthAIinR/blob/main/modules/Module1.Rmd)  
