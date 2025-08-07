@@ -170,27 +170,70 @@ I also like to use base-r functions `pdf()` and `png()`. These function serves a
 
 ```{r}
 
+#set a path to save the file to
+username<-"YOUR USERNAME HERE"
+output_path<-paste0("/mnt/work/workbench/",username,"/scratch/",username,"/test_plot.png")
+
 #approach 1
-my_plot<-
-ggsave(filename = "test_plot.png", plot = my_plot, width = 12, height = 10, dpi = 300, units = "cm")
+my_plot<-ggplot(dat,aes(x=Age,y=BloodPressure)) + geom_point()
+ggsave(filename = output_path, plot = my_plot, width = 12, height = 10, dpi = 300, units = "cm")
 
 #approach 2
-pdf("test_plot2.png",height=3,width=3,useDingbats=FALSE)
+pdf(output_path,height=3,width=3,useDingbats=FALSE)
 my_plot
 dev.off()
 
 ?png
 
+# if you are in the working directory where you want to save the plot, you can just put a string in the function instead of the variable representing an absolute path
 
 ```
 
+### Resources
+
+There are a lot of online resources for customizing data visualization. A few that we recommend:
+1) https://r-graph-gallery.com/ggplot2-package.html
+2) https://r-graphics.org/
+3) https://ggplot2.tidyverse.org/
+
 ### Challenge
 
-Task: Given a simple data frame of patients with ID, sex, age, and cholesterol values in two visits, write code to:
-	1.	
+Task: Given a data frame of patients' inflammatory measures over time, create a plot that shows these measurements over time, stratified by patient
+	0. Read in the data with `read_csv`
+	1. Use `mutate()` to add a sample ID column
+	2. Turn the data from wide to long with `pivot_longer()`
+	3. Turn the column that represents time points into numeric
+	4. Create a line plot `ggplot2`; inflammation should be on the y-axis, timepoint should be on the x-axis. Use `facet_wrap()` to separate by sample ID.
+	5. Export the plot with `ggsave()`
 
 ```{r}
 
+#define the path to the data
+username<-"YOUR USERNAME HERE"
+path<-paste0("/mnt/work/workbench/",username,"/scratch/",username,"/data/")
+path2<-paste0(path,"inflammation-01.csv")
+
+#read in the inflammation data as a tibble
+
+
+# use mutate to create a sample ID column
+
+
+# use pivot_longer to restructure the data
+
+
+
+# turn the timepoint column from character to numeric
+# HINT mutate(timepoint_num=as.numeric(sub("^X", "", timepoint)))
+
+#create a plot with one line per sample
+
+#export the plot with ggsave()
+
+#set a path to save the file to
+username<-"YOUR USERNAME HERE"
+output_path<-paste0("/mnt/work/workbench/",username,"/scratch/",username,"/inflammation.png")
+## put ggsave() call here
 
 
 ```
