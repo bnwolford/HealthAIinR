@@ -11,18 +11,26 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Module 1: Introduction to R
 
-* Basics of R programming
-* Understanding the RStudio IDE
-* RMarkdown for reproducible research
-
+#### Sources
 Content for this Module is derived from
 * https://bookdown.org/rdpeng/rprogdatascience/r-nuts-and-bolts.html
 * https://hbctraining.github.io/Intro-to-R-flipped/lessons/04_introR_packages.html
+* https://swcarpentry.github.io/r-novice-inflammation/01-starting-with-data.html#manipulating-data
+
+ChatGPT was used in the creation of examples and explanations.
+
+### Objectives
+By the end of this session, learners will be able to:
+  * Basics of R programming
+  * Understanding the RStudio IDE
+  * RMarkdown for reproducible research
 
 ### R Markdown
 This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. 
+
+A script ends in `.R`) and a notebook ends in `.Rmd`
 
 ### Defining variables
 R has five basic or “atomic” classes of objects:
@@ -32,8 +40,16 @@ R has five basic or “atomic” classes of objects:
 - complex
 - logical (True/False)
 
+Once a variable is created, we can use the variable name to refer to the value it was assigned. The variable name now acts as a tag. To see the value of a variable, we can print it by:
+1) typing the name of the variable and hitting return in the Console
+2) if your cursor is on a line in the editor window, you can use control-enter (PC) or command-return (Mac)
+3) press the Run button above
+4) press the green play button in the RMarkdown code chunk
+In general, R will print to the console any object returned by a function or operation unless we assign it to a variable.
+
 ```{r}
 
+#we use an arrow to assign a value to a variable
 x<-5
 class(x)
 
@@ -45,7 +61,9 @@ z<-1L
 class(z)
 ```
 
-It is important that we name variables in a way that other users and our future selves will understand.  Today, most R programmers 1) start variable names with lower case letters, 2) separate words in variable names with underscores, and 3) use only lowercase letters, underscores, and numbers in variable names. The [Tidyverse Style Guide](https://style.tidyverse.org/syntax.html) includes a section on this.
+It is important that we name variables in a way that other users and our future selves will understand. Today, most R programmers 1) start variable names with lower case letters, 2) separate words in variable names with underscores, and 3) use only lowercase letters, underscores, and numbers in variable names. The [Tidyverse Style Guide](https://style.tidyverse.org/syntax.html) includes a section on this.
+
+It's also important to use the `#` hash symbol to create comments for other users and our future selves.
 
 The most basic type of R object is a vector. Vectors can only contain objects of the same class. A list is represented as a vector but can contain objects of different classes.
 
@@ -58,6 +76,8 @@ print(a)
 #define a vector with c() function
 b<-c(1,2,3)
 print(b)
+
+#check what class the variables are
 class(a)
 class(b)
 
@@ -69,18 +89,45 @@ df<-data.frame(x,y)
 ```
 
 
+
+### Ways to use R
+```{r} 
+
+#as a calculator
+1+2
+sqrt(25)
+
+
+# View summary statistics
+heights <- c(150, 160, 165, 170, 155)
+mean(heights)
+summary(heights)
+
+# plot data using base R
+plot(heights)
+
+# perform statistical tests
+heights2<-c(100,80,85,90)
+t.test(heights,heights2)
+
+```
+
+
 ### Libraries and functions
-Packages are collections of R functions, data, and compiled code in a well-defined format, created to add specific functionality. There are 10,000+ user contributed packages on CRAN. The directories in R where the packages are stored are called the libraries.
+Packages are collections of R functions, data, and compiled code in a well-defined format, created to add specific functionality. You can do a lot with base R, but there are 10,000+ user contributed packages on CRAN. The directories in R where the packages are stored are called the libraries.
+
+If you're using R on your computer, you can use the function `install.packages` to install a package. You can also use RStudio. However, because of the way workbench is set up in R, we need to use the Terminal to install packages. Return to the JupyterLab tab and select Terminal from the Launcher. 
+
+Execute the following commands:
+`conda activate r-base`
+`conda install r-ggplot`
 
 ```{r}
 
 #what libraries are loaded in the environment?
 sessionInfo()
 
-#let's install a package
-install.packages("ggplot2")
-
-#now we call the package
+#now we call the package we installed
 library(ggplot2)
 
 #now we can use functions from the ggplot2 package
@@ -93,6 +140,30 @@ ggplot(df,aes(x,y)) + geom_point()
 [Functional programming](https://www.turing.com/kb/introduction-to-functional-programming) is a declarative programming paradigm style where one applies pure functions in sequence to solve complex problems. Functions take an input value and produce an output value without being affected by the program.
 
 R lends itself well to a style of problem solving centered on functions so it can be used as a [functional language](https://adv-r.hadley.nz/oo.html). However, [object orienting programm](https://adv-r.hadley.nz/oo.html) is also possible in R, using the S3 system for example. These are more advanced computer science concepts which aren't required to understand, but are good to be aware of.
+
+HUNT Cloud is a secure environment for analyzing sensitive data.
+
+Using sensitive data in biomedical research requires a careful balance between scientific advancement and the protection of individual privacy and rights. Sensitive data often includes personally identifiable information (PII) such as names, dates of birth, or contact details, as well as health-related data like genetic information, diagnoses, test results, or treatment records. Because this type of data can reveal intimate details about a person’s health status and identity, it is subject to strict ethical, legal, and institutional safeguards.
+
+Researchers must adhere to national and international regulations, such as the General Data Protection Regulation (GDPR) in the European Union. These frameworks define how sensitive data can be collected, stored, shared, and used. For example, under GDPR, data must be processed lawfully, transparently, and only for specified purposes. Researchers are also required to implement data minimization and to ensure that data are accurate, kept up to date, and stored securely.
+
+In practice, ethical research with sensitive data involves several layers of protection. First, researchers typically seek approval from an ethics committee, which assesses the risks and benefits of the study and ensures that informed consent is obtained. Consent forms should clearly explain how the data will be used, who will have access, and what measures are in place to protect confidentiality. In some cases, broad consent may be used for biobanks or longitudinal studies like the HUNT Study, but this must still respect participants’ autonomy and rights.
+
+To further protect individuals, sensitive data are often de-identified or pseudonymized, meaning that direct identifiers are removed or replaced with codes. However, even de-identified data can carry risks of re-identification, particularly when linked with other datasets. As a result, researchers must employ technical safeguards (such as encryption and secure servers) as well as administrative controls (like restricted access and data-use agreements) to mitigate these risks.
+
+Ultimately, the responsible use of sensitive data is essential for building public trust and ensuring the long-term sustainability of biomedical research. Using sensitive data in biomedical research requires a careful balance between scientific advancement and the protection of individual privacy and rights. Sensitive data often includes personally identifiable information (PII) such as names, dates of birth, or contact details, as well as health-related data like genetic information, diagnoses, test results, or treatment records. Because this type of data can reveal intimate details about a person’s health status and identity, it is subject to strict ethical, legal, and institutional safeguards.
+
+Researchers must adhere to national and international regulations, such as the General Data Protection Regulation (GDPR) in the European Union or the Health Insurance Portability and Accountability Act (HIPAA) in the United States. These frameworks define how sensitive data can be collected, stored, shared, and used. For example, under GDPR, data must be processed lawfully, transparently, and only for specified purposes. Researchers are also required to implement data minimization and to ensure that data are accurate, kept up to date, and stored securely.
+
+In practice, ethical research with sensitive data involves several layers of protection. First, researchers typically seek approval from an ethics committee or institutional review board (IRB), which assesses the risks and benefits of the study and ensures that informed consent is obtained. Consent forms should clearly explain how the data will be used, who will have access, and what measures are in place to protect confidentiality. In some cases, broad consent may be used for biobanks or longitudinal studies, but this must still respect participants’ autonomy and rights.
+
+To further protect individuals, sensitive data are often de-identified or pseudonymized, meaning that direct identifiers are removed or replaced with codes. However, even de-identified data can carry risks of re-identification, particularly when linked with other datasets. As a result, researchers must employ technical safeguards (such as encryption and secure servers) as well as administrative controls (like restricted access and data-use agreements) to mitigate these risks.
+
+Ultimately, the responsible use of sensitive data is essential for building public trust and ensuring the long-term sustainability of biomedical research.
+
+Remember
+* Never store sensitive data in plaintext without protection.
+* Always store sensitive data outside version control systems like Git. Use .ignore files to achieve this.
 
 
 

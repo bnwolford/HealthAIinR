@@ -1,0 +1,112 @@
+---
+title: "Module3"
+output: html_document
+date: "2025-08-07"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Module 3: Data visualization with ggplot2
+
+#### Sources
+Content for this Module is derived from:
+* https://swcarpentry.github.io/r-novice-gapminder/08-plot-ggplot2.html
+
+ChatGPT was used in the creation of examples and explanations.
+
+### Objectives
+By the end of this session, learners will be able to:
+	*	Understand the grammar of graphics
+	*	Create basic visualizations using ggplot2
+	*	Customize aesthetics, labels, and themes
+	*	Use facet_wrap() to explore subgroups
+	
+### Introduction
+
+The "gg" in `ggplot2` stands for grammar of graphics. The plots are built in layers and you can additively string together functions with `+` to add layers and customize your plots.
+
+```{r}
+
+#read in the data we used in Module 2
+
+username<-"YOUR USERNAME HERE"
+path<-paste0("/mnt/work/workbench/",username,"/scratch/",username,"/data/")
+path2<-paste0(path,"sample.csv")
+
+dat<-read_csv(path2)
+
+# Start with the dataset and aesthetic mapping
+ggplot(data = dat, aes(x = Age, y = BloodPressure))
+
+#Nothing appears — because no geometric layer is added yet!
+
+# Add a geometric layer: scatter plot
+ggplot(data = dat, aes(x = Age, y = BloodPressure)) +
+  geom_point()
+
+#the plot will show up on the bottom right of your RStudio IDE
+
+
+```
+
+# Common plots
+
+Histograms visualize the distribution of a continuous variable by dividing its range into consecutive intervals called bins and then counting the number of observations that fall into each bin. By default, `geom_histogram()` has 30 bins. Binwidth controls the width of the bins (or bars) along the x-axis. The binwidth argument directly specifies the size of these intervals. For example, if your x-axis represents age in years and you set binwidth = 5, each bar in the histogram will represent a 5-year age range.
+
+`ggplot` has many themes that allow for publication ready plots. You can tweak the display of existing themes or make your own.
+Read more [here](https://ggplot2.tidyverse.org/reference/ggtheme.html). 
+
+```{r}
+
+# Let's make a histogram
+ggplot(data = dat, aes(x = Age)) +
+  geom_histogram()
+
+# Let's customize the histogram with arguments for bin width and color
+ggplot(data = dat, aes(x = Age)) +
+  geom_histogram(binwidth=5,fill="blue") 
+
+
+# Bar plot for categorical data; geom_bar uses counts by default; now we add a theme for a nicer presentation
+ggplot(data=dat, aes(x = Group)) +
+  geom_bar(fill = "darkorange") + theme_bw()
+
+```
+
+
+### Exporting the plot
+
+The `ggsave()` function allows you to export a plot created with ggplot. You can specify the dimension and resolution of your plot by adjusting the appropriate arguments (width, height and dpi) to create high quality graphics for publication. 
+
+I also like to use base-r functions `pdf()` and `png()`. These function serves as a graphics device driver, allowing you to direct plots generated in R to a PDF or png file. You use it in conjunction with dev.off() to open and then close the file for writing.
+
+```{r}
+
+#approach 1
+my_plot<-
+ggsave(filename = "test_plot.png", plot = my_plot, width = 12, height = 10, dpi = 300, units = "cm")
+
+#approach 2
+pdf("test_plot2.png",height=3,width=3,useDingbats=FALSE)
+my_plot
+dev.off()
+
+?png
+
+
+```
+
+### Challenge
+
+Task: Given a simple data frame of patients with ID, sex, age, and cholesterol values in two visits, write code to:
+	1.	
+
+```{r}
+
+
+
+```
+
+

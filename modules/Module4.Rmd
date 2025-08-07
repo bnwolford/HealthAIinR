@@ -1,0 +1,23 @@
+---
+title: "Module4"
+output: html_document
+date: "2025-08-07"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Module 4: Statistical analysis in R
+
+#### Sources
+Content for this Module is derived from:
+
+ChatGPT was used in the creation of examples and explanations.
+
+### Objectives
+By the end of this session, learners will be able to:
+	*
+	
+### Introduction
+
