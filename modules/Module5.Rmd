@@ -1,0 +1,56 @@
+---
+title: "Module5"
+output: html_document
+date: "2025-08-07"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#### Sources
+Content for this Module is derived from
+* https://rebeccabarter.com/blog/2020-03-25_machine_learning
+* https://education.rstudio.com/blog/2020/02/conf20-intro-ml/
+* https://www.r-bloggers.com/2020/05/using-xgboost-with-tidymodels/#google_vignette
+
+ChatGPT was used in the creation of examples and explanations.
+
+
+### Introduction
+
+AI versus Machine Learning
+Machine learning is a subset of AI. "Artificial intelligence refers to the general ability of computers to emulate human thought and perform tasks in real-world environments, while machine learning refers to the technologies and algorithms that enable systems to identify patterns, make decisions, and improve themselves through experience and data." You can read more:
+* https://ai.engineering.columbia.edu/ai-vs-machine-learning/
+* https://professionalprograms.mit.edu/blog/technology/machine-learning-vs-artificial-intelligence/
+
+The original package for machine learning in R is `caret`: Caret stands for Classification And Regression Training. More recently, `tidymodels` uses the grammar of the tidyverse as a collection of modelling packages.
+
+```{r}
+
+library(caret)
+library(tidymodels)
+```
+
+The first step is an exploratory data analysis—plots and summaries of the data to understand the variables and their distributions. However, we have done that in previous modules. 
+
+### data split 
+Training data is used for the model training and hyperparameter tuning. Once trained, the model can be evaluated against test data to assess accuracy.
+
+```{r}
+# split into training and testing datasets. Stratify by Sale price 
+ames_split <- rsample::initial_split(
+  ames_data, 
+  prop = 0.2, 
+  strata = sale_price
+)
+
+```
+
+### Preprocessing
+
+### random forest
+
+### xgboost
+
+XGBoost is robust against highly skewed and/or correlated data, so the amount of preprocessing required is minimal. 

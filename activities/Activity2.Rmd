@@ -1,0 +1,20 @@
+---
+title: "Activity2"
+output: html_document
+date: "2025-08-06"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Activity 2
+
+Use information from previous modules to start analyzing a new large dataset. We've downloaded Artificial data from the UK National Healthcare System from this [website](https://digital.nhs.uk/services/artificial-data)
+
+```{r}
+
+
+
+```
+
