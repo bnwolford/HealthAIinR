@@ -15,6 +15,8 @@ This lesson is based on content from [Software Carpentry
 * https://swcarpentry.github.io/r-novice-inflammation/01-starting-with-data.html
 * https://datacarpentry.github.io/genomics-r-intro/05-dplyr.html
 * https://datacarpentry.github.io/r-socialsci/03-dplyr.html
+* https://datacarpentry.github.io/r-socialsci/04-tidyr.html
+* https://mqwilber.github.io/2015-04-17-ucsb/lessons/intro_R_lessons/R_data_plotting_analysis.html
 ChatGPT was used in the creation of examples and explanations.
 
 ### Objectives
@@ -217,9 +219,6 @@ BP_vec[1:10]
 Common dplyr verbs: `filter`, `select`, `mutate`, `summarize`, `group_by`
 Check out the [dplyr cheatsheet](https://rstudio.github.io/cheatsheets/data-transformation.pdf)
 
-`pivot_longer` and `pivor_wider` are useful functions from `tidyr`
-[tidyr cheatsheet](https://rstudio.github.io/cheatsheets/tidyr.pdf)
-
 Note: The packages in the tidyverse, namely dplyr, tidyr and ggplot2 accept both the British (e.g. summarise) and American (e.g. summarize) spelling variants of different function and option names.
 
 #### filter() and select()
@@ -347,7 +346,60 @@ dat %>% count(Group)
 #let's sort by size
 dat %>% count(Group,sort=TRUE)
 
+```
 
+### long and wide data
+
+A lot of data you will encounter is in a long format:
+1) each column is a variable
+2) each row is an observation
+3) each value has its own cell
+Long format is more machine readable and is closer to the formatting of databases.
+
+Alternatively, in a “wide” data format we see modifications to rule 1, where each column no longer represents a single variable. Instead, columns can represent different levels/values of a variable. 
+
+The columns Aneurisms_q1-Aneurisms_q4 are total number of aneurysms for both eyes in four different quadrants of the eye. We can think of this part of the data frame as being rather wide. If we wanted it to be longer, we would have just 2 columns, one being the quadrant number and one being the number of aneurysms in the quadrant. 
+
+Two key functions in `tidyr` are `pivot_longer()` and `pivot_wider()`. [tidyr cheatsheet](https://rstudio.github.io/cheatsheets/tidyr.pdf)
+
+pivot_longer() takes four principal arguments:
+
+1) the data
+2) cols are the names of the columns we use to fill the a new values variable (or to drop).
+3) the names_to column variable we wish to create from the cols provided.
+4) the values_to column variable we wish to create and fill with values associated with the cols provided.
+
+```{r}
+
+long<-dat %>% pivot_longer(cols=Aneurisms_q1:Aneurisms_q4,
+                     names_to="Quadrant",
+                     values_to="AneurismCount")
+long
+
+# what do you observe about the new data frame?
+
+# now we can use group_by to summarize by quadrant, this would have been difficult in the previous format
+long %>% group_by(Quadrant) %>% 
+  summarize(median=median(AneurismCount))
+
+```
+
+We can think of the Group and BloodPressure columns of the dataset as being a long version of something that could be represented with a wide format. Let's test `pivot_wider` here.
+
+pivot_wider() takes three principal arguments:
+
+1) the data
+2) the names_from column variable whose values will become new column names.
+3) the values_from column variable whose values will fill the new column variables.
+
+Further arguments include values_fill which, if set, fills in missing values with the value provided.
+
+```{r}
+
+dat %>% pivot_wider(names_from=Group,
+            values_from = BloodPressure)
+
+# You see we have NA in the cells that are missing. This probably isn't a good data format for this dataset, but it may come in handy in other scenarios.
 
 ```
 
