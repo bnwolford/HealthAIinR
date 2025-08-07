@@ -26,7 +26,8 @@ git pull
 8. To save some time later, let's install some packages. 
 
 ```
-conda install r-ggplot2, r-tidymodels, r-dlpyr, r-tidyr, r-readr
+conda activate r-base
+conda install r-ggplot2, r-tidymodels, r-dlpyr, r-tidyr, r-readr, r-survival, r-survminer, r-data.table
 ```
 
 # Course Material :warning: Still under maintenance  
