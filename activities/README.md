@@ -1,3 +1,5 @@
+# Activities
+
 Paired programming exercise: read and clean sensitive data  
 Goal: Read in data and familiarize with data structure, variable distributions, etc.  
 [Activity 1](https://github.com/bnwolford/HealthAIinR/blob/main/activities/Activity1.Rmd)
