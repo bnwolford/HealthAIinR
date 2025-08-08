@@ -69,7 +69,7 @@ str(mat)
 
 First, we need to load in the libraries we will use. Remember to go to Terminal to install new packages.
 
-`conda install r-dplyr,r-tidyr,r-readr,`
+`conda install r-dplyr r-tidyr r-readr`
 
 ```{r}
 library(dplyr)
