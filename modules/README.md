@@ -30,7 +30,7 @@ conda activate r-base
 conda install r-ggplot2 r-tidymodels r-dlpyr r-tidyr r-readr r-survival r-survminer r-data.table r-ggsurvfit
 ```
 
-# Course Material :warning: Still under maintenance  
+# Course Material  
 [Module 1](https://github.com/bnwolford/HealthAIinR/blob/main/modules/Module1.Rmd)  
 [Module 2](https://github.com/bnwolford/HealthAIinR/blob/main/modules/Module2.Rmd)  
 [Module 3](https://github.com/bnwolford/HealthAIinR/blob/main/modules/Module3.Rmd)  
