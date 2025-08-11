@@ -11,7 +11,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Activity 1
 
-Objective: Use information from Module 1 and Module 2 to read in sensitive data 
+### Pair programming
+
+Pair programming is a technique where two programmers work together at one workstation. One programmer, the driver, writes the code, while the other, the navigator, reviews the code as it's being written and offers suggestions. The goal is to learn from each other. It's best practice to switch driver and navigator roles roughly every 10 minutes or whenever you come to a natural break point.
+
+### Objective: Use information from Module 1 and Module 2 to read in sensitive data 
 
 For the hands-on application of what you've been learning, we are going to use artificial data sets from the United Kingdom's National Health Service. These are downloaded from [here](https://digital.nhs.uk/services/artificial-data).
 
@@ -24,7 +28,7 @@ First, we need to go to Terminal and copy the data from a shared folder to your 
 
 ```{r}
 ##call libraries
-library(tidyverse)
+library(c(tidyr,dplyr,readr,ggplot2))
 
 #remember to replace $USER
 
@@ -39,16 +43,14 @@ glimpse(df)
 
 Let's focus on the diagnoses (DIAG_3_01) the admission date (ADMIDATE); the discharge date (DISDATE); Date of Birth (MYDOB); and sex (SEX). What are the first steps we would take if we want to study what diagnoses are associated with a longer hospital admission time?
 
-The tibble shows the dates in a "Date" class. To manipualte dates we can use the `Sys.Date` functionality or we can use the [`lubridate` package] but there is also `clock` which offers a "tidy" way of [managing dates and times](https://www.tidyverse.org/blog/2021/03/clock-0-1-0/).
+The tibble shows the dates in a "Date" class. To manipualte dates we can use the `Sys.Date` functionality or we can use the `lubridate` package but there is also `clock` which offers a "tidy" way of [managing dates and times](https://www.tidyverse.org/blog/2021/03/clock-0-1-0/).
 
 ```{r}
-
-library(lubridate)
 
 #make a smaller dataset to work with
 sub<-df %>% select(DIAG_3_01, ADMIDATE, DISDATE,PSEUDO_HESID,MYDOB, SEX)
 
-#number of days someone was admitted
+#calculate number of days someone was admitted
 sub<-sub %>% mutate(duration=as.numeric(DISDATE-ADMIDATE))
 
 #how many different diagnoses do we have in the dataset?
@@ -61,7 +63,7 @@ sub %>% group_by(DIAG_3_01) %>% summarize(count=n())
 
 #create a histogram of the duration of admission
 
-#how can you calculate the age at admission using the month and year DOB which is in a character format instead of a date format
+#how can you calculate the age at admission using the month and year DOB? Note the latter is in a character format instead of a date format
 
 ```
 
