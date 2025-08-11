@@ -31,11 +31,18 @@ git pull
 
 8. To save some time later, let's install some packages. 
 
+Day 1:
 ```
 conda activate r-base
 conda install r-ggplot2 r-tidymodels r-dplyr r-tidyr r-readr r-survival r-survminer r-data.table r-ggsurvfit r-xgboost r-skimr r-janitor
 ```
 
+Day 2:
+```
+conda activate r-base
+conda install r-workflows, r-tune, r-mlbench
+
+```
 in R console:
 ```R
 install.packages(c("ggplot2", "tidymodels", "dplyr", "tidyr", "readr"))
