@@ -19,11 +19,17 @@ We need a data dictionary to understand what the columns represent. We are focus
 
 We are using the sample which is 10,000 rows instead of 1 million rows in the "full" dataset. This is due to time and memory constraints on the lab, but you could absolutely do this type of analysis on large sensitive data like the full sample available.
 
+First, we need to go to Terminal and copy the data from a shared folder to your own folder. Remember to replace `$USER` with your username.
+`cp -r /mnt/work/data/artificial_hes_apc_202302_v1_sample/ /mnt/work/workbench/$USER/`
+
 ```{r}
 ##call libraries
 library(tidyverse)
 
-data_dir<-"/mnt/work/workbench/bwolford/scratch/bwolford/artificial_hes_apc_202302_v1_sample/artificial_hes_apc_0102.csv"
+#remember to replace $USER
+
+data_dir<-"/mnt/work/workbench/$USER/artificial_hes_apc_202302_v1_sample/artificial_hes_apc_0102.csv"
+
 
 #read in .csv
 df<-read_csv(data_dir)
