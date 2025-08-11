@@ -108,6 +108,27 @@ Set your working directory in RStudio in the consoles tab:
 See your current working directory:
 `getwd()`
 
+### For local access on Windows computers:
+
+	Navigate to the following URL. The file should download automatically.
+	https://swcarpentry.github.io/r-novice-inflammation/data/r-novice-inflammation-data.zip
+
+	Open the .zip file. You should see a folder named "data".
+
+	Right click on the "data" folder, and click "Copy".
+
+	Navigate to the location you have saved the "HealthAIinR" folder.
+
+	Paste the "data" folder to the "HealthAIinR" folder.
+
+	Now, go back to RStudio. In the consoles tab on the bottom left, enter the following command to check the current working drive.
+	`getwd()`
+
+	Change the working directory to the "data" folder. (Windows users need the slash / in this direction.)
+	`setwd('HealthAIinR/')`
+	If you have used GitHub Desktop to clone the repository to your Windows computer, your path will probably be something like: 
+	"C:/Users/<username>/OneDrive - <institution>/Documents/GitHub/HealthAIinR"
+
 Now, let's read our data into R. There are several options for reading csv files:
 
 - Base R has the function `read.csv()` which creates a basic data frame.
@@ -124,6 +145,9 @@ path2<-paste0(path,"sample.csv")
 #we pass 2 arguments, the path where the file is, and information about if the file has column names
 #we assign the data frame information to the variable "dat"
 datt<-read_csv(file=path2,col_names=TRUE)
+	#for local access from Windows computers (given that the working directory is set to "HealthAIinR/data") 
+		#NB: Cannot use file paths with the read_csv command on Windows, so working directory needs to be set beforehand
+	#datt<-read_csv("sample.csv", col_names=TRUE)
 datt
 class(datt)
 
@@ -133,6 +157,9 @@ class(datt)
 
 #let's use base R because it's a little easier for beginners
 dat<-read.csv(file=path2,header=TRUE)
+	#for local access from Windows computers (given that the working directory is set to "HealthAIinR/data") 
+		#NB: Cannot use file paths with the read.csv command on Windows, so working directory needs to be set beforehand
+	#dat<-read.csv("sample.csv", header=TRUE)
 head(dat)
 class(dat)
 
