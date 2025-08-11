@@ -40,6 +40,12 @@ in R console:
 ```R
 install.packages(c("ggplot2", "tidymodels", "dplyr", "tidyr", "readr"))
 ```
+# For local access (on Windows computers) (one method)
+1. Install GitHub Desktop (if not already installed).
+2. On the course GitHub page, click on the green "<> Code" button. Copy the URL.
+3. Open GitHub Desktop. In the top menu, click on File > Clone repository > URL. Paste in the URL you copied from the GitHub online. Check the local path and make sure it's where you want to save it. If you're satisfied, click "Clone".
+4. The repository should automatically load it and come up with an option to "Open in editor (RStudio)". If RStudio is already open, you'll have to close it and then click "Open in editor (RStudio)".
+5. All the materials should be available now through RStudio.
 
 # Course Material  
 
