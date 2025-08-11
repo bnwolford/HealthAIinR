@@ -3,21 +3,39 @@ project:
 
 website:
   title: "Health AI in R Workshop"
+  site-url: https://brookewolford.com/HealthAIinR
+  repo-url: https://github.com/bnwolford/HealthAIinR
+  repo-actions: [edit, issue]
   navbar:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
+    right:
+      - icon: github
+        href: https://github.com/bnwolford/HealthAIinR
+        aria-label: GitHub repository
+  sidebar:
+    contents:
+      - section: "Lesson Modules"
+        contents: "modules/*"
+      - section: Activities
+        contents: "activities/*"
+      - section: Bonus
+        contents: "bonus/*"
+      - text: License
+        href: LICENSE.md
 
 format:
   html:
-    theme:
-      - cosmo
-      - brand
+    theme: cosmo
     css: styles.css
     toc: true
+    code-fold: false
+    code-tools: true
 
 execute:
   eval: false
+  echo: true
+  freeze: auto
 engine: knitr
 

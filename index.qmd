@@ -2,6 +2,4 @@
 title: "Health AI in R Workshop"
 ---
 
-This is a Quarto website.
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+Visit the [Course Wiki](https://github.com/bnwolford/HealthAIinR/wiki)
