@@ -10,6 +10,7 @@ website:
     left:
       - href: index.qmd
         text: Home
+    right:
       - icon: github
         href: https://github.com/bnwolford/HealthAIinR
         aria-label: GitHub repository
@@ -21,17 +22,16 @@ website:
         contents: "activities/*"
       - section: Bonus
         contents: "bonus/*"
-  page-footer:
-    center:
-      - LICENSE.md
+      - text: License
+        href: LICENSE.md
 
 format:
   html:
-    theme:
-      - cosmo
-      - brand
+    theme: cosmo
     css: styles.css
     toc: true
+    code-fold: false
+    code-tools: true
 
 execute:
   eval: false
