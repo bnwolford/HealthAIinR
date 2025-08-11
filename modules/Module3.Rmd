@@ -11,11 +11,12 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Module 3: Data visualization with ggplot2
 
 #### Sources
+
 Content for this Module is derived from:
 * https://swcarpentry.github.io/r-novice-gapminder/08-plot-ggplot2.html
 * https://www.datanovia.com/en/lessons/ggplot-violin-plot/
 
-ChatGPT was used in the creation of examples and explanations.
+> ChatGPT was used in the creation of examples and explanations.
 
 ### Objectives
 By the end of this session, learners will be able to:
@@ -28,7 +29,7 @@ By the end of this session, learners will be able to:
 
 The "gg" in `ggplot2` stands for grammar of graphics. The plots are built in layers and you can additively string together functions with `+` to add layers and customize your plots. The key part of making our plot is to tell ggplot how we want to visually represent the data. We do this by adding a new layer to the plot using one of the geom functions.
 
-```{r}
+```{r eval="false"}
 
 #read in the data we used in Module 2
 
@@ -168,7 +169,7 @@ The `ggsave()` function allows you to export a plot created with ggplot. You can
 
 I also like to use base-r functions `pdf()` and `png()`. These function serves as a graphics device driver, allowing you to direct plots generated in R to a PDF or png file. You use it in conjunction with dev.off() to open and then close the file for writing.
 
-```{r}
+```{r eval="false"}
 
 #set a path to save the file to
 username<-"YOUR USERNAME HERE"
@@ -206,7 +207,7 @@ Task: Given a data frame of patients' inflammatory measures over time, create a 
 	4. Create a line plot `ggplot2`; inflammation should be on the y-axis, timepoint should be on the x-axis. Use `facet_wrap()` to separate by sample ID.
 	5. Export the plot with `ggsave()`
 
-```{r}
+```{r eval="false"}
 
 #define the path to the data
 username<-"YOUR USERNAME HERE"
