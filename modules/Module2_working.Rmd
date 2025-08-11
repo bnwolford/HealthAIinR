@@ -76,14 +76,14 @@ First, we need to load in the libraries we will use. Remember to go to Terminal 
 
 We are going to download example data from Software Carpentry. 
 
-In Terminal, navigate to the your scratch directory.
-`cd /mnt/work/workbench/<username>/scratch/<username>`
+In Terminal, navigate to your directory.
+`cd /mnt/work/workbench/<username>/`
 
 Execute the commands to download from a URL
 `wget https://swcarpentry.github.io/r-novice-inflammation/data/r-novice-inflammation-data.zip`
 
 Unzip the data
-`unzip r-novice-inflammation-data.zip` 
+`unzip r-novice-inflammation-data.zip`
 
 Change directory into the new folder
 `cd data`

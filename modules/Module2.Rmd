@@ -84,19 +84,8 @@ library(readr)
 
 We are going to download example data from Software Carpentry.
 
-In Terminal, navigate to the your scratch directory.
-`cd /mnt/work/workbench/<username>/scratch/`
-
-Create a new directory inside the scratch directory for your username:
-`mkdir <username>`
-
-Now go to the directory you just created:
-`cd <username>`
-
-See your current working directory (i.e. where you are right now):
-`pwd`
-
-The path should have the pattern `/mnt/work/workbench/<username>/scratch/<username>`.
+In Terminal, navigate to your directory.
+`cd /mnt/work/workbench/<username>/`
 
 Execute the commands to download from a URL
 `wget https://swcarpentry.github.io/r-novice-inflammation/data/r-novice-inflammation-data.zip`
