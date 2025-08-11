@@ -16,20 +16,34 @@ Content for this Module is derived from
 
 ChatGPT was used in the creation of examples and explanations.
 
+### Objectives 
+By the end of the session, participants will be able to:
+	* Understand key concepts in AI & machine learning.
+	* Perform data preprocessing for ML tasks.
+	* Train and evaluate basic models using caret, tidymodels, randomForest, and xgboost.
+	* Interpret key model evaluation metrics.
 
 ### Introduction
 
 AI versus Machine Learning
-Machine learning is a subset of AI. "Artificial intelligence refers to the general ability of computers to emulate human thought and perform tasks in real-world environments, while machine learning refers to the technologies and algorithms that enable systems to identify patterns, make decisions, and improve themselves through experience and data." You can read more:
+
+Machine learning is a subset of AI. "Artificial intelligence refers to the general ability of computers to emulate human thought and perform tasks in real-world environments, while machine learning refers to the technologies and algorithms that enable systems to identify patterns, make decisions, and improve themselves through experience and data." Deep learning is a type of machien learning using neural networks. You can read more:
 * https://ai.engineering.columbia.edu/ai-vs-machine-learning/
 * https://professionalprograms.mit.edu/blog/technology/machine-learning-vs-artificial-intelligence/
+* https://www.ibm.com/think/topics/ai-vs-machine-learning-vs-deep-learning-vs-neural-networks
 
-The original package for machine learning in R is `caret`: Caret stands for Classification And Regression Training. More recently, `tidymodels` uses the grammar of the tidyverse as a collection of modelling packages.
+The original package for machine learning in R is `caret`: Caret stands for Classification And Regression Training. More recently, `tidymodels` uses the grammar of the tidyverse as a collection of modelling packages. `caret` is more widely used while `tidymodels` offers a modern, modular approach. 
 
 ```{r}
 
 library(caret)
 library(tidymodels)
+library(tidyverse)
+library(randomForest)
+library(xgboost)
+library(skimr)
+library(janitor)
+
 ```
 
 The first step is an exploratory data analysis—plots and summaries of the data to understand the variables and their distributions. However, we have done that in previous modules. 
@@ -49,7 +63,9 @@ ames_split <- rsample::initial_split(
 
 ### Preprocessing
 
-### random forest
+Common preprocessing tasks are to convert factors to numbers, handle missing data, and normalize/standardize where appropriate.
+
+### Random Forest
 
 ### xgboost
 
