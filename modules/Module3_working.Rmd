@@ -161,7 +161,7 @@ Task: Given a data frame of patients' inflammatory measures over time, create a 
 
 #define the path to the data
 username<-"YOUR USERNAME HERE"
-path<-paste0("/mnt/work/workbench/",username,"/scratch/",username,"/data/")
+path<-paste0("/mnt/work/workbench/",username,"/data/")
 path2<-paste0(path,"inflammation-01.csv")
 
 #read in the inflammation data as a tibble
