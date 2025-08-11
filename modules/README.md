@@ -27,7 +27,7 @@ git pull
 
 ```
 conda activate r-base
-conda install r-ggplot2 r-tidymodels r-dlpyr r-tidyr r-readr r-survival r-survminer r-data.table r-ggsurvfit r-xgboost r-skimr r-janitor
+conda install r-ggplot2 r-tidymodels r-dplyr r-tidyr r-readr r-survival r-survminer r-data.table r-ggsurvfit r-xgboost r-skimr r-janitor
 ```
 
 # Course Material  
