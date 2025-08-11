@@ -1,5 +1,11 @@
 # Activities
 
+First, copy the data to your directory. Remember to put your username in the path.
+
+```
+cp -r /mnt/work/data/artificial_hes_apc_202302_v1_sample/ /mnt/work/workbench/<username>/
+```
+
 Paired programming exercise: read and clean sensitive data  
 Goal: Read in data and familiarize with data structure, variable distributions, etc.  
 [Activity 1](https://github.com/bnwolford/HealthAIinR/blob/main/activities/Activity1.Rmd)
