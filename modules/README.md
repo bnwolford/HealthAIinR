@@ -30,6 +30,11 @@ conda activate r-base
 conda install r-ggplot2 r-tidymodels r-dplyr r-tidyr r-readr r-survival r-survminer r-data.table r-ggsurvfit r-xgboost r-skimr r-janitor
 ```
 
+in R console:
+```R
+install.packages("ggplot2", "tidymodels", "dplyr", "tidyr", "readr")
+```
+
 # Course Material  
 
 We recommend that you use the working versions of the files that do not have the commands typed for you. This way you can actually write the commands and not just execute them. This makes for more effective learning.
