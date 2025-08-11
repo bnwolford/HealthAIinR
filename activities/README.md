@@ -1,9 +1,9 @@
 # Activities
 
-First, copy the data to your directory. Remember to put your username in the path.
+First, copy the data to your directory. Remember to put your username in the path insetad of $USER.
 
 ```
-cp -r /mnt/work/data/artificial_hes_apc_202302_v1_sample/ /mnt/work/workbench/<username>/
+cp -r /mnt/work/data/artificial_hes_apc_202302_v1_sample/ /mnt/work/workbench/$USER/
 ```
 
 Paired programming exercise: read and clean sensitive data  
