@@ -1,5 +1,0 @@
----
-title: "Health AI in R Workshop"
----
-
-Visit the [Course Wiki](https://github.com/bnwolford/HealthAIinR/wiki)
