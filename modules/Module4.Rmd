@@ -301,7 +301,7 @@ The quantity of interest from a Cox regression model is a hazard ratio (HR). The
 # Plot
 
 # Fit Cox model with sex as variable of interest
-cox_model <- coxph(Surv(time, status) ~ sex, data = lung)
+cox_model <- coxph(Surv(time, status) ~ sex, data = df)
 summary(cox_model)
 
 tbl_regression(cox_model)
