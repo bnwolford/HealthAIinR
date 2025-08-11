@@ -12,9 +12,31 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Use information from previous modules to start analyzing a new large dataset. We've downloaded Artificial data from the UK National Healthcare System from this [website](https://digital.nhs.uk/services/artificial-data)
 
+Your objective is to perform exploratory data analysis with the artificial data, which is very like real sensitive data, and use some classic statistical methods.
+
 ```{r}
 
+##call libraries
+library(c(dplyr,tidyr,readr,ggplot2))
 
+#remember to replace $USER
+
+#set directory path
+data_dir<-"/mnt/work/workbench/$USER/artificial_hes_apc_202302_v1_sample/artificial_hes_apc_0102.csv"
+
+#read in .csv
+df<-read_csv(data_dir)
+
+glimpse(df)
+
+#make a smaller dataset to work with; for example:
+sub<-df %>% select(DIAG_3_01, ADMIDATE, DISDATE,PSEUDO_HESID,MYDOB, SEX)
+
+glimpse(sub)
 
 ```
+
+
+
+
 
