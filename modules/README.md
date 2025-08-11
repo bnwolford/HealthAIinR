@@ -32,7 +32,7 @@ conda install r-ggplot2 r-tidymodels r-dplyr r-tidyr r-readr r-survival r-survmi
 
 in R console:
 ```R
-install.packages("ggplot2", "tidymodels", "dplyr", "tidyr", "readr")
+install.packages(c("ggplot2", "tidymodels", "dplyr", "tidyr", "readr"))
 ```
 
 # Course Material  
