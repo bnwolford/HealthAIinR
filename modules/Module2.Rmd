@@ -126,7 +126,7 @@ Now, let's read our data into R. There are several options for reading csv files
 - The tidyverse has the `readr` package with the function `read_csv()`. This creates a tibble, a special type of data frame.
 
 
-```{r eval="false"}
+```{r}
 
 username<-"YOUR USERNAME HERE"
 path<-paste0("/mnt/work/workbench/",username,"/scratch/",username,"/data/")

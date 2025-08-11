@@ -29,7 +29,7 @@ By the end of this session, learners will be able to:
 
 The "gg" in `ggplot2` stands for grammar of graphics. The plots are built in layers and you can additively string together functions with `+` to add layers and customize your plots. The key part of making our plot is to tell ggplot how we want to visually represent the data. We do this by adding a new layer to the plot using one of the geom functions.
 
-```{r eval="false"}
+```{r}
 
 #read in the data we used in Module 2
 
@@ -169,7 +169,7 @@ The `ggsave()` function allows you to export a plot created with ggplot. You can
 
 I also like to use base-r functions `pdf()` and `png()`. These function serves as a graphics device driver, allowing you to direct plots generated in R to a PDF or png file. You use it in conjunction with dev.off() to open and then close the file for writing.
 
-```{r eval="false"}
+```{r}
 
 #set a path to save the file to
 username<-"YOUR USERNAME HERE"

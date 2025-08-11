@@ -1,1 +1,4 @@
 /.quarto/
+/data
+/_site/
+/_freeze/
