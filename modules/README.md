@@ -31,11 +31,22 @@ conda install r-ggplot2 r-tidymodels r-dlpyr r-tidyr r-readr r-survival r-survmi
 ```
 
 # Course Material  
-[Module 1](https://github.com/bnwolford/HealthAIinR/blob/main/modules/Module1.Rmd)  
-[Module 2](https://github.com/bnwolford/HealthAIinR/blob/main/modules/Module2.Rmd)  
-[Module 3](https://github.com/bnwolford/HealthAIinR/blob/main/modules/Module3.Rmd)  
-[Module 4](https://github.com/bnwolford/HealthAIinR/blob/main/modules/Module4.Rmd)  
-[Module 5](https://github.com/bnwolford/HealthAIinR/blob/main/modules/Module5.Rmd)  
+
+We recommend that you use the working versions of the files that do not have the commands typed for you. This way you can actually write the commands and not just execute them. This makes for more effective learning.
+
+[Module 1 working version](https://github.com/bnwolford/HealthAIinR/blob/main/modules/Module1.Rmd)  
+[Module 2 working version](https://github.com/bnwolford/HealthAIinR/blob/main/modules/Module2.Rmd)  
+[Module 3 working version](https://github.com/bnwolford/HealthAIinR/blob/main/modules/Module3.Rmd)  
+[Module 4 working version](https://github.com/bnwolford/HealthAIinR/blob/main/modules/Module4.Rmd)  
+[Module 5 working version](https://github.com/bnwolford/HealthAIinR/blob/main/modules/Module5.Rmd)  
+
+If you get lost or need to reference something, you can use the files below.
+
+[Module 1](https://github.com/bnwolford/HealthAIinR/blob/main/modules/Module1_working.Rmd)  
+[Module 2](https://github.com/bnwolford/HealthAIinR/blob/main/modules/Module2_working.Rmd)  
+[Module 3](https://github.com/bnwolford/HealthAIinR/blob/main/modules/Module3_working.Rmd)  
+[Module 4](https://github.com/bnwolford/HealthAIinR/blob/main/modules/Module4_working.Rmd)  
+[Module 5](https://github.com/bnwolford/HealthAIinR/blob/main/modules/Module5_working.Rmd)  
 
 If you cloned the directory before today, go back to your Terminal and execute these commands, remembering to replace $USER. This will bring any new updates from github to your folder on HUNT Cloud.  
 ```
