@@ -11,31 +11,32 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Module 2: Data Handling in R
 
-This lesson is based on content from [Software Carpentry
+This lesson is based on content from Software Carpentry
 * https://swcarpentry.github.io/r-novice-inflammation/01-starting-with-data.html
 * https://datacarpentry.github.io/genomics-r-intro/05-dplyr.html
 * https://datacarpentry.github.io/r-socialsci/03-dplyr.html
 * https://datacarpentry.github.io/r-socialsci/04-tidyr.html
 * https://mqwilber.github.io/2015-04-17-ucsb/lessons/intro_R_lessons/R_data_plotting_analysis.html
-ChatGPT was used in the creation of examples and explanations.
+
+> ChatGPT was used in the creation of examples and explanations.
 
 ### Objectives
 
 By the end of this session, learners will be able to:
-	*	Download data in Terminal to use in RStudio
-	* Differentiate between data frames, lists, and matrices
-	* Use base R to subset data
-	* Use the dplyr package to manipulate dataframes.
+  * Download data in Terminal to use in RStudio
+  * Differentiate between data frames, lists, and matrices
+  * Use base R to subset data
+  * Use the dplyr package to manipulate dataframes.
   * Use select() to choose variables from a dataframe.
   * Use filter() to choose data based on values.
   * Use group_by() and summarize() to work with subsets of data.
-  *Use mutate() to create new variables.
+  * Use mutate() to create new variables.
 
 ### Data frames, matrices, and lists
 
-	* Data frame: most common tabular structure in R
-	* List: collection of elements of different types
-	* Matrix: 2D array of only one data type
+  * Data frame: most common tabular structure in R
+  * List: collection of elements of different types
+  * Matrix: 2D array of only one data type
 
 ```{r}
 
@@ -71,25 +72,37 @@ First, we need to load in the libraries we will use. Remember to go to Terminal 
 
 `conda install r-dplyr r-tidyr r-readr`
 
+> The tidyverse package is an "umbrella-package" that installs several packages useful for data analysis which work together well such as tidyr, dplyr, readr, ggplot2, tibble, etc. It can take some time to install, so do that later if you would like.
+
 ```{r}
 library(dplyr)
 library(tidyr)
 library(readr)
 
 #library(tidyverse)
-#The tidyverse package is an “umbrella-package” that installs several packages useful for data analysis which work together well such as tidyr, dplyr, readr, ggplot2, tibble, etc. It can take some time to install, so do that later if you would like.
 ```
 
-We are going to download example data from Software Carpentry. 
+We are going to download example data from Software Carpentry.
 
 In Terminal, navigate to the your scratch directory.
-`cd /mnt/work/workbench/<username>/scratch/<username>`
+`cd /mnt/work/workbench/<username>/scratch/`
+
+Create a new directory inside the scratch directory for your username:
+`mkdir <username>`
+
+Now go to the directory you just created:
+`cd <username>`
+
+See your current working directory (i.e. where you are right now):
+`pwd`
+
+The path should have the pattern `/mnt/work/workbench/<username>/scratch/<username>`.
 
 Execute the commands to download from a URL
 `wget https://swcarpentry.github.io/r-novice-inflammation/data/r-novice-inflammation-data.zip`
 
 Unzip the data
-`unzip r-novice-inflammation-data.zip` 
+`unzip r-novice-inflammation-data.zip`
 
 Change directory into the new folder
 `cd data`
@@ -97,15 +110,23 @@ Change directory into the new folder
 List everything in the directory
 `ls`
 
-Now, let's read our data into R. 
+Go back to the parent directory:
+`cd ..`
 
-I like to use the `data.table` package which has a function `fread()` and can be memory efficient for reading larger datasets. This creates a data.table object which has its own grammar for manipulating. 
+Set your working directory in RStudio in the consoles tab:
+`setwd('/mnt/work/workbench/<username>/scratch/<username>')`
 
-The tidyverse has the `readr` package with the function `read_csv()`. This creates a tibble.
+See your current working directory:
+`getwd()`
 
-base R has the function `read.csv()` which creates a basic data frame.
+Now, let's read our data into R. There are several options for reading csv files:
 
-```{r} 
+- Base R has the function `read.csv()` which creates a basic data frame.
+- I like to use the `data.table` package which has a function `fread()` and can be memory efficient for reading larger datasets. This creates a data.table object which has its own grammar for manipulating.
+- The tidyverse has the `readr` package with the function `read_csv()`. This creates a tibble, a special type of data frame.
+
+
+```{r eval="false"}
 
 username<-"YOUR USERNAME HERE"
 path<-paste0("/mnt/work/workbench/",username,"/scratch/",username,"/data/")
@@ -217,7 +238,7 @@ BP_vec[1:10]
 ### dplyr and tidyr
 
 Common dplyr verbs: `filter`, `select`, `mutate`, `summarize`, `group_by`
-Check out the [dplyr cheatsheet](https://rstudio.github.io/cheatsheets/data-transformation.pdf)
+> Check out the [dplyr cheatsheet](https://rstudio.github.io/cheatsheets/data-transformation.pdf)
 
 Note: The packages in the tidyverse, namely dplyr, tidyr and ggplot2 accept both the British (e.g. summarise) and American (e.g. summarize) spelling variants of different function and option names.
 
