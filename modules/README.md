@@ -30,6 +30,11 @@ conda activate r-base
 conda install r-ggplot2 r-tidymodels r-dplyr r-tidyr r-readr r-survival r-survminer r-data.table r-ggsurvfit r-xgboost r-skimr r-janitor
 ```
 
+in R console:
+```R
+install.packages("ggplot2", "tidymodels", "dplyr", "tidyr", "readr")
+```
+
 # Course Material  
 [Module 1](https://github.com/bnwolford/HealthAIinR/blob/main/modules/Module1.Rmd)  
 [Module 2](https://github.com/bnwolford/HealthAIinR/blob/main/modules/Module2.Rmd)  
