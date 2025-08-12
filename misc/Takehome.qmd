@@ -1,6 +1,8 @@
 ---
 title: "Takehome"
-format: revealjs
+format:
+  revealjs:
+    theme: ../custom.scss
 ---
 
 ## Take home messages

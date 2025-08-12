@@ -1,0 +1,121 @@
+/*-- scss:defaults --*/
+
+// colors
+// https://brand.umich.edu/design-resources/colors/
+$michigan-blue: #00274C;
+$puma-black: #131516;
+$arb-blue: #2F65A7;
+$rackham-green: #75988d;
+$taubman-teal: #00B2A9;
+$angel-ash: #989C97;
+$white: #FFFFFF;
+
+$presentation-font-size-root: 28px;
+$presentation-heading-color: $michigan-blue; // Michigan blue
+$body-color: $puma-black; // Puma black
+$link-color: $arb-blue; // Arboretum blue
+
+/*-- scss:rules --*/
+
+.reveal .slide blockquote {
+    border-left: 3px solid $taubman-teal !important;
+    padding-left: 0.5em !important;
+  }
+
+.reveal .slide-logo {
+    bottom: 10px !important;
+    right: 20px !important;
+    height: 65px !important;
+    width: auto !important;
+    max-width: unset !important;
+    max-height: unset !important;
+    position: fixed;
+  }
+
+.reveal .subtitle {
+    color: $presentation-heading-color !important;
+    font-size: $presentation-h3-font-size !important;
+}
+/* can't figure out how to override author class?
+.reveal .author {
+    color: $body-color !important;
+}
+*/
+.reveal .date {
+    color: $body-color !important;
+}
+
+.small-text {
+    font-size: small !important;
+}
+
+.smaller-text {
+    font-size: smaller !important;
+}
+
+.x-small-text {
+    font-size: x-small !important;
+}
+
+.medium-text {
+    font-size: medium !important;
+}
+
+.large-text {
+    font-size: large !important;
+}
+
+.color-muted {
+    color: $text-muted !important;
+}
+
+.big-center {
+    font-size: 60px !important;
+    color: $michigan-blue !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+    padding: 200px 0;
+}
+
+.align-center {
+    text-align: center !important;
+}
+
+.align-right {
+    text-align: right !important;
+}
+
+.big-middle {
+    font-size: xxx-large !important;
+    color: $michigan-blue !important;
+    vertical-align: middle !important;
+    padding: 70px !important;
+}
+
+.frame-box {
+    border: 3px solid $michigan-blue !important;
+    border-radius: 5px !important;
+    padding: 0.5em !important;
+}
+
+.filled-box {
+    border: 5px solid $michigan-blue !important;
+    border-radius: 5px !important;
+    padding: 1px !important;
+    background: $michigan-blue !important;
+    color: $white !important;
+}
+
+.black-frame {
+    border: 2px solid $puma-black !important;
+    border-radius: 2px !important;
+}
+.narrow-frame {
+    border: 1.5px solid !important;
+    border-radius: 2px !important;
+    //padding: 0.5px !important;
+    text-align: center !important;
+    font-size: large !important;
+    background: #CCCCCC !important;
+    color: $body-color !important;
+}
