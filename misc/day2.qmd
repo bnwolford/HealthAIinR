@@ -1,0 +1,26 @@
+---
+title: "day 2"
+format: revealjs
+---
+
+## Welcome back!
+
+Please try to log on to Hunt Cloud
+
+1. Connect to the VPN with tunnelblick
+2. Go to the course server: <https://healthai-course-2025.lab.hdc.ntnu.no/>
+3. Open a terminal & install more packages:
+  ```sh
+  conda activate r-base
+  conda install r-workflows r-tune r-mlbench r-ranger r-randomforest
+  ```
+4. Launch an RStudio session
+5. If you haven't, clone the repo:
+  ```sh
+  git clone https://github.com/bnwolford/HealthAIinR
+  ```
+  If you have already cloned it, update it:
+  ```sh
+  cd /path/to/HealthAIinR
+  git pull
+  ```
