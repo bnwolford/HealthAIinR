@@ -492,7 +492,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li><p>The model type: what kind of model you want to fit, set using a different function depending on the model, such as <code>rand_forest()</code> for random forest, <code>logistic_reg()</code> for logistic regression, <code>svm_poly()</code> for a polynomial SVM model etc. The full list of models available via parsnip can be found <a href="https://tidymodels.github.io/parsnip/articles/articles/Models.html">here</a>.</p></li>
 <li><p>The arguments: the model parameter values set using <code>set_args()</code>.</p></li>
-<li><p>The engine: the underlying package the model should come from (e.g.&nbsp;“ranger” for the fast C++ implementation of Random Forest or randomForest for the original R implementation), set using <code>set_engine()</code>.</p></li>
+<li><p>The engine: the underlying package the model should come from (e.g.&nbsp;“ranger” for the fast C++ implementation of Random Forest or <code>randomForest</code> for the original R implementation), set using <code>set_engine()</code>.</p></li>
 <li><p>The mode: the type of prediction - since several packages can do both classification (binary/categorical prediction) and regression (continuous prediction), set using <code>set_mode()</code>.</p></li>
 </ol>
 <p>A random forest is a machine learning algorithm that uses an ensemble of decision trees to make predictions. It works by training multiple decision trees on different subsets of the data and then combining their outputs to arrive at a final prediction. This ensemble approach generally leads to higher accuracy and better generalization compared to using a single decision tree.</p>
@@ -570,7 +570,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(rf_model)</span>
 <span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="co">#now we add trees to the grid</span></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>rf_grid <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">mtry =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>), <span class="at">trees =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">500</span>))</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>rf_grid <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">mtry =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>), <span class="at">trees =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">500</span>,<span class="dv">1000</span>))</span>
 <span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="co"># extract results</span></span>
 <span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>rf_tune_results2 <span class="ot">&lt;-</span> rf_workflow <span class="sc">%&gt;%</span></span>
 <span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tune_grid</span>(<span class="at">resamples =</span> df_cv, <span class="co">#CV object</span></span>
@@ -773,11 +773,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb13-68"><a href="#cb13-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_cols</span>(df_test) <span class="sc">%&gt;%</span></span>
 <span id="cb13-69"><a href="#cb13-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">accuracy</span>(<span class="at">truth =</span> diabetes, <span class="at">estimate =</span> .pred_class)  <span class="co"># Accuracy</span></span>
 <span id="cb13-70"><a href="#cb13-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-71"><a href="#cb13-71" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate ROC curve data</span></span>
-<span id="cb13-72"><a href="#cb13-72" aria-hidden="true" tabindex="-1"></a>roc_data <span class="ot">&lt;-</span> <span class="fu">roc_curve</span>(df_clean, <span class="at">truth =</span> diabetes, .pred_neg)</span>
+<span id="cb13-71"><a href="#cb13-71" aria-hidden="true" tabindex="-1"></a>test_results <span class="ot">&lt;-</span> <span class="fu">predict</span>(final_fit, df_test, <span class="at">type =</span> <span class="st">"prob"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb13-72"><a href="#cb13-72" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_cols</span>(df_test <span class="sc">%&gt;%</span> <span class="fu">select</span>(diabetes))  <span class="co"># event level</span></span>
 <span id="cb13-73"><a href="#cb13-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-74"><a href="#cb13-74" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot ROC curve</span></span>
-<span id="cb13-75"><a href="#cb13-75" aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(roc_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-74"><a href="#cb13-74" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate ROC curve data</span></span>
+<span id="cb13-75"><a href="#cb13-75" aria-hidden="true" tabindex="-1"></a>roc_data <span class="ot">&lt;-</span> <span class="fu">roc_curve</span>(test_results, <span class="at">truth =</span> diabetes, .pred_neg)</span>
+<span id="cb13-76"><a href="#cb13-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-77"><a href="#cb13-77" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot ROC curve</span></span>
+<span id="cb13-78"><a href="#cb13-78" aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(roc_data) <span class="sc">+</span>  </span>
+<span id="cb13-79"><a href="#cb13-79" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"ROC Curve for Diabetes Model"</span>) <span class="sc">+</span></span>
+<span id="cb13-80"><a href="#cb13-80" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
@@ -1409,7 +1414,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb14-179"><a href="#cb14-179" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-180"><a href="#cb14-180" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>The arguments: the model parameter values set using <span class="in">`set_args()`</span>.</span>
 <span id="cb14-181"><a href="#cb14-181" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-182"><a href="#cb14-182" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>The engine: the underlying package the model should come from (e.g. “ranger” for the fast C++ implementation of Random Forest or randomForest for the original R implementation), set using <span class="in">`set_engine()`</span>.</span>
+<span id="cb14-182"><a href="#cb14-182" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>The engine: the underlying package the model should come from (e.g. “ranger” for the fast C++ implementation of Random Forest or <span class="in">`randomForest`</span> for the original R implementation), set using <span class="in">`set_engine()`</span>.</span>
 <span id="cb14-183"><a href="#cb14-183" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-184"><a href="#cb14-184" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>The mode: the type of prediction - since several packages can do both classification (binary/categorical prediction) and regression (continuous prediction), set using <span class="in">`set_mode()`</span>.</span>
 <span id="cb14-185"><a href="#cb14-185" aria-hidden="true" tabindex="-1"></a></span>
@@ -1500,7 +1505,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb14-278"><a href="#cb14-278" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(rf_model)</span>
 <span id="cb14-279"><a href="#cb14-279" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-280"><a href="#cb14-280" aria-hidden="true" tabindex="-1"></a><span class="co">#now we add trees to the grid</span></span>
-<span id="cb14-281"><a href="#cb14-281" aria-hidden="true" tabindex="-1"></a>rf_grid <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">mtry =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>), <span class="at">trees =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">500</span>))</span>
+<span id="cb14-281"><a href="#cb14-281" aria-hidden="true" tabindex="-1"></a>rf_grid <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">mtry =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>), <span class="at">trees =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">500</span>,<span class="dv">1000</span>))</span>
 <span id="cb14-282"><a href="#cb14-282" aria-hidden="true" tabindex="-1"></a><span class="co"># extract results</span></span>
 <span id="cb14-283"><a href="#cb14-283" aria-hidden="true" tabindex="-1"></a>rf_tune_results2 <span class="ot">&lt;-</span> rf_workflow <span class="sc">%&gt;%</span></span>
 <span id="cb14-284"><a href="#cb14-284" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tune_grid</span>(<span class="at">resamples =</span> df_cv, <span class="co">#CV object</span></span>
@@ -1723,13 +1728,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb14-511"><a href="#cb14-511" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_cols</span>(df_test) <span class="sc">%&gt;%</span></span>
 <span id="cb14-512"><a href="#cb14-512" aria-hidden="true" tabindex="-1"></a>  <span class="fu">accuracy</span>(<span class="at">truth =</span> diabetes, <span class="at">estimate =</span> .pred_class)  <span class="co"># Accuracy</span></span>
 <span id="cb14-513"><a href="#cb14-513" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-514"><a href="#cb14-514" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate ROC curve data</span></span>
-<span id="cb14-515"><a href="#cb14-515" aria-hidden="true" tabindex="-1"></a>roc_data <span class="ot">&lt;-</span> <span class="fu">roc_curve</span>(df_clean, <span class="at">truth =</span> diabetes, .pred_neg)</span>
+<span id="cb14-514"><a href="#cb14-514" aria-hidden="true" tabindex="-1"></a>test_results <span class="ot">&lt;-</span> <span class="fu">predict</span>(final_fit, df_test, <span class="at">type =</span> <span class="st">"prob"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-515"><a href="#cb14-515" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_cols</span>(df_test <span class="sc">%&gt;%</span> <span class="fu">select</span>(diabetes))  <span class="co"># event level</span></span>
 <span id="cb14-516"><a href="#cb14-516" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-517"><a href="#cb14-517" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot ROC curve</span></span>
-<span id="cb14-518"><a href="#cb14-518" aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(roc_data)</span>
+<span id="cb14-517"><a href="#cb14-517" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate ROC curve data</span></span>
+<span id="cb14-518"><a href="#cb14-518" aria-hidden="true" tabindex="-1"></a>roc_data <span class="ot">&lt;-</span> <span class="fu">roc_curve</span>(test_results, <span class="at">truth =</span> diabetes, .pred_neg)</span>
 <span id="cb14-519"><a href="#cb14-519" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-520"><a href="#cb14-520" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-520"><a href="#cb14-520" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot ROC curve</span></span>
+<span id="cb14-521"><a href="#cb14-521" aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(roc_data) <span class="sc">+</span>  </span>
+<span id="cb14-522"><a href="#cb14-522" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"ROC Curve for Diabetes Model"</span>) <span class="sc">+</span></span>
+<span id="cb14-523"><a href="#cb14-523" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb14-524"><a href="#cb14-524" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-525"><a href="#cb14-525" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
