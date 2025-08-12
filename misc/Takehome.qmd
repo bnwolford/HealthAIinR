@@ -1,0 +1,18 @@
+---
+title: "Takehome"
+format: revealjs
+---
+
+## Take home messages
+
+1. Now you know how to read in data (.csv), clean it and explore underlying distributions. 
+
+2. You can create publication ready visualizations with ggplot2
+
+3. You know basic statistical commands (t.test) and linear/logistic regression
+
+4. You can use tidymodels to create workflows, recipes, and models to analzye data with a variety of machine learning algorithms
+
+5. You know how to access a high throughput computing cluster for use of sensitive health data 
+
+6. You learned how to read documentation of functions and search for answers when you get error messages or don't know how to approach a problem
