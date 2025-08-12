@@ -175,7 +175,6 @@ For random forest, we can tune hyperparameters like mtry, the number of randomly
 
 ```
 
-Note, XGBoost is robust against highly skewed and/or correlated data, so the amount of preprocessing required is minimal. 
 
 ### Workflow
 

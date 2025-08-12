@@ -211,7 +211,6 @@ lr_model <-
 
 ```
 
-Note, XGBoost is robust against highly skewed and/or correlated data, so the amount of preprocessing required is minimal. 
 
 ### Workflow
 
