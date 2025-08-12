@@ -63,7 +63,6 @@ library(workflows)
 library(tune)
 library(mlbench)
 
-
 ```
 
 ### Exploratory Data Analysis and Pre-processing
@@ -72,6 +71,7 @@ The first step is an exploratory data analysis—-plots and summaries of the dat
 We will use the Pima Indian Women’s diabetes dataset which contains information on 768 Pima Indian women’s diabetes status, as well as many predictive features. This is built into the `mlbench` library.
 
 ```{r}
+#load data from the mlbench package
 data("PimaIndiansDiabetes")
 df <- PimaIndiansDiabetes
 
@@ -177,6 +177,8 @@ For model specification you need:
 3. The engine: the underlying package the model should come from (e.g. “ranger” for the fast C++ implementation of Random Forest or randomForest for the original R implementation), set using `set_engine()`.
 
 4. The mode: the type of prediction - since several packages can do both classification (binary/categorical prediction) and regression (continuous prediction), set using `set_mode()`.
+
+A random forest is a machine learning algorithm that uses an ensemble of decision trees to make predictions. It works by training multiple decision trees on different subsets of the data and then combining their outputs to arrive at a final prediction. This ensemble approach generally leads to higher accuracy and better generalization compared to using a single decision tree. 
 
 For random forest, we can tune hyperparameters like mtry, the number of randomly selected predictors to consider at each split, or trees, the number of trees in the forest.
 
@@ -420,7 +422,7 @@ ggplot(var_imp_df, aes(x = reorder(variable, importance), y = importance)) +
 
 ### Challenge:
 
-The goal is to use what we have learned with `tidymodels`, `workflow`, and `tune` and run xgboost and glm. Note, XGBoost is robust against highly skewed and/or correlated data, so the amount of preprocessing required is minimal. 
+The goal is to use what we have learned with `tidymodels`, `workflow`, and `tune` and run xgboost and glm. Note, XGBoost is robust against highly skewed and/or correlated data, so the amount of preprocessing required is minimal. It is another type of supervised machine learning algorithm.
 
 ```{r}
 
@@ -494,5 +496,11 @@ df_test %>%
   predict(final_fit, ., type = "class") %>%
   bind_cols(df_test) %>%
   accuracy(truth = diabetes, estimate = .pred_class)  # Accuracy
+
+# Calculate ROC curve data
+roc_data <- roc_curve(df_clean, truth = diabetes, .pred_neg)
+
+# Plot ROC curve
+autoplot(roc_data)
 
 ```
