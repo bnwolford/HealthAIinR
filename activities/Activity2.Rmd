@@ -17,22 +17,82 @@ Your objective is to perform exploratory data analysis with the artificial data,
 ```{r}
 
 ##call libraries
-library(c(dplyr,tidyr,readr,ggplot2))
+library(tidyr)
+library(dplyr)
+library(readr)
+library(ggplot2)
+library(lubridate)
 
-#remember to replace $USER
 
-#set directory path
-data_dir<-"/mnt/work/workbench/$USER/artificial_hes_apc_202302_v1_sample/artificial_hes_apc_0102.csv"
+#remember to make this path make sense efor the working directory you are currently in
+data_dir<-"artificial_hes_apc_0102.csv"
 
 #read in .csv
 df<-read_csv(data_dir)
 
 glimpse(df)
 
-#make a smaller dataset to work with; for example:
+#make a smaller dataset to work with
 sub<-df %>% select(DIAG_3_01, ADMIDATE, DISDATE,PSEUDO_HESID,MYDOB, SEX)
 
-glimpse(sub)
+#calculate number of days someone was admitted
+sub<-sub %>% 
+  mutate(duration=as.numeric(DISDATE-ADMIDATE))
+
+#pre processing
+summary(sub$duration)
+
+#remove outliers
+sub2 <- sub %>% filter(duration<500)
+
+#linear model
+lm_obj<-lm(duration~DIAG_3_01,data=sub2)
+summary(lm_obj)
+plot(lm_obj)
+
+coef_df<-data.frame(lm_obj$coefficients) 
+coef_df<- coef_df%>%
+  mutate(variable=row.names(coef_df))
+
+ggplot(coef_df,aes(x=lm_obj.coefficients,y=variable)) + geom_point()
+
+
+#### use tidymodels
+
+# Split data into training and testing
+set.seed(123)
+data_split <- initial_split(sub2, prop = 0.8) #split 80/20
+train_data <- training(data_split)
+test_data  <- testing(data_split)
+
+# Recipe: outcome = duration, predictors = diagnosis_code
+lm_recipe <- recipe(duration ~ DIAG_3_01, data = train_data) %>%
+  step_unknown() %>% #assigns a missing value in a factor level to unknown
+  step_dummy(all_nominal_predictors()) # convert diagnosis_code to dummies
+
+# Model specification: linear regression
+lm_spec <- linear_reg() %>%
+  set_engine("lm")
+
+# Workflow
+lm_workflow <- workflow() %>%
+  add_recipe(lm_recipe) %>%
+  add_model(lm_spec)
+
+# Fit model on training data
+lm_fit <- lm_workflow %>%
+  fit(data = train_data)
+
+# View results
+lm_fit_tidy<-lm_fit %>% tidy()
+lm_fit_tidy %>% slice_max(estimate, n = 5)
+
+# Predict on test set
+predictions <- predict(lm_fit, test_data) %>%
+  bind_cols(test_data)
+
+# Evaluate model performance
+metrics(predictions, truth = duration, estimate = .pred)
 
 ```
 
