@@ -37,16 +37,23 @@ conda activate r-base
 conda install r-ggplot2 r-tidymodels r-dplyr r-tidyr r-readr r-survival r-survminer r-data.table r-ggsurvfit r-xgboost r-skimr r-janitor
 ```
 
-Day 2:
-```
-conda activate r-base
-conda install r-workflows r-tune r-mlbench r-ranger r-randomForest
-
-```
 in R console:
 ```R
 install.packages(c("ggplot2", "tidymodels", "dplyr", "tidyr", "readr"))
 ```
+
+Day 2:
+```
+conda activate r-base
+conda install r-workflows r-tune r-mlbench r-ranger r-randomForest
+```
+
+in R:
+```
+install.packages(c("workflows","tune","mlbench","ranger","randomForest"))
+
+```
+
 # For local access (on Windows computers) (one method)
 1. Install GitHub Desktop (if not already installed).
 2. On the course GitHub page, click on the green "<> Code" button. Copy the URL.
