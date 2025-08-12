@@ -40,7 +40,7 @@ conda install r-ggplot2 r-tidymodels r-dplyr r-tidyr r-readr r-survival r-survmi
 Day 2:
 ```
 conda activate r-base
-conda install r-workflows r-tune r-mlbench r-ranger
+conda install r-workflows r-tune r-mlbench r-ranger r-randomForest
 
 ```
 in R console:
