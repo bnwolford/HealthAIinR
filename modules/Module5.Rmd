@@ -119,6 +119,9 @@ df_test <- testing(df_split)
 # create cross validation object from training data
 df_cv <- vfold_cv(df_train)
 
+#how many folds does this make by default?
+?vfold_cv
+
 ```
 
 ### Define a recipe
@@ -203,8 +206,6 @@ lr_model <-
   # choose either the continuous regression or binary classification mode
   set_mode("classification") 
 
-# how would you define an xgboost model?
-#xgboost<-
 
 ```
 
@@ -299,9 +300,9 @@ best_acc
 As you can see, the best AUROC and best accuracy give us different hyperparameters. What to do?
 
 Pick the metric that actually matters for your problem
-	•	Accuracy is best if false positives and false negatives cost roughly the same and your classes are balanced.
-	•	AUROC is better if you care about ranking cases correctly (e.g., risk scores) or you have class imbalance. It evaluates how well the model separates the classes regardless of a specific threshold.
-	•	If you’re in biomedical research, AUROC is often more appropriate than accuracy, because outcomes like disease presence are usually imbalanced, and you care about discrimination rather than just the raw percent correct.
+	*	Accuracy is best if false positives and false negatives cost roughly the same and your classes are balanced.
+	*	AUROC is better if you care about ranking cases correctly (e.g., risk scores) or you have class imbalance. It evaluates how well the model separates the classes regardless of a specific threshold.
+	*	If you’re in biomedical research, AUROC is often more appropriate than accuracy, because outcomes like disease presence are usually imbalanced, and you care about discrimination rather than just the raw percent correct.
 
 Ideally we would report both metrics but select based on our primary metric of interest. If accuracy and AUROC pull you toward wildly different parameter sets, it may be worth checking why — sometimes it’s due to overfitting to noise in one metric.
 
@@ -323,7 +324,7 @@ rf_workflow <- rf_workflow %>%
 
 Now we’ve defined the recipe, model, and tuned the model’s parameters. Since all of this information is in the workflow object, we will apply the `last_fit()` function to our workflow and our train/test split object. This will automatically train the model specified by the workflow using the training data, and produce evaluations based on the test set.
 
-Note that the fit object is a data-frame-like object—a tibble with list columns.
+Note that the fit object is a data-frame-like object--a tibble with list columns.
 
 You can also extract the test set predictions themselves using the `collect_predictions()` function. Note that there are 192 rows in the predictions object, which corresponds to the number of rows in the test set.
 
@@ -419,22 +420,10 @@ ggplot(var_imp_df, aes(x = reorder(variable, importance), y = importance)) +
 
 ### Challenge:
 
-The goal is to use what we have learned and run xgboost and glm.
+The goal is to use what we have learned with `tidymodels`, `workflow`, and `tune` and run xgboost and glm. Note, XGBoost is robust against highly skewed and/or correlated data, so the amount of preprocessing required is minimal. 
 
 ```{r}
 
-
-# Example dataset: keep binary classification
-data(iris)
-iris <- iris %>% filter(Species != "setosa") %>% droplevels()
-
-# Train/test split
-iris_split <- initial_split(iris, prop = 0.8, strata = Species)
-iris_train <- training(iris_split)
-iris_test  <- testing(iris_split)
-
-# Cross-validation folds
-iris_folds <- vfold_cv(iris_train, v = 5, strata = Species)
 
 # Model specification with tuneable parameters
 xgb_spec <- boost_tree(
@@ -449,7 +438,9 @@ xgb_spec <- boost_tree(
   set_engine("xgboost")
 
 # Preprocessing recipe
-xgb_recipe <- recipe(Species ~ ., data = iris_train) %>%
+xgb_recipe <- recipe(diabetes ~ pregnant + glucose + pressure + triceps + 
+           insulin + mass + pedigree + age, 
+         data = df_clean) %>%
   step_dummy(all_nominal_predictors()) %>%   # one-hot encode if needed
   step_zv(all_predictors())                  # remove zero variance cols
 
@@ -465,7 +456,7 @@ xgb_grid <- grid_latin_hypercube(
   learn_rate(range = c(0.001, 0.3)),
   loss_reduction(range = c(0, 5)),   # gamma
   sample_size = sample_prop(),       # subsample
-  mtry(range = c(1, ncol(iris_train) - 1)),
+  mtry(range = c(1, ncol(df_train) - 1)),
   size = 20
 )
 
@@ -475,7 +466,7 @@ multi_metrics <- metric_set(accuracy, roc_auc)
 # Tune model
 xgb_tune <- tune_grid(
   xgb_wf,
-  resamples = iris_folds,
+  resamples = df_cv,
   grid = xgb_grid,
   metrics = multi_metrics
 )
@@ -491,17 +482,17 @@ best_auc
 final_xgb <- finalize_workflow(xgb_wf, best_auc)
 
 # Fit on full training set
-final_fit <- fit(final_xgb, data = iris_train)
+final_fit <- fit(final_xgb, data = df_train)
 
 # Evaluate on test set
-iris_test %>%
+df_test %>%
   predict(final_fit, ., type = "prob") %>%
-  bind_cols(iris_test) %>%
-  roc_auc(truth = Species, .pred_versicolor)  # AUROC
+  bind_cols(df_test) %>%
+  roc_auc(truth = diabetes,.pred_neg)  # AUROC
 
-iris_test %>%
+df_test %>%
   predict(final_fit, ., type = "class") %>%
-  bind_cols(iris_test) %>%
-  accuracy(truth = Species, estimate = .pred_class)  # Accuracy
+  bind_cols(df_test) %>%
+  accuracy(truth = diabetes, estimate = .pred_class)  # Accuracy
 
 ```
