@@ -28,7 +28,10 @@ First, we need to go to Terminal and copy the data from a shared folder to your 
 
 ```{r}
 ##call libraries
-library(c(tidyr,dplyr,readr,ggplot2))
+library(tidyr)
+library(dplyr)
+library(readr)
+library(ggplot2)
 
 #remember to replace $USER
 
