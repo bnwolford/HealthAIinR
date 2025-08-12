@@ -124,7 +124,7 @@ Creating a recipe has two parts which we layer with pipes:
 
 1. Specify the formula (`recipe()`): specify the outcome variable and predictor variables
 
-2. Specify pre-processing steps (`step_zzz()`): define the pre-processing steps, such as imputation of missing data, creating dummy variables, scaling, etc.
+2. Specify pre-processing steps: define the pre-processing steps, such as imputation of missing data, creating dummy variables, scaling, etc.
 
 Note we use the “role selections” as arguments to the pre-processing steps. They specify that we want to apply the step to “all numeric” variables or “all predictor variables”.
 
@@ -348,3 +348,5 @@ The goal is to use what we have learned with `tidymodels`, `workflow`, and `tune
 
 
 ```
+
+
