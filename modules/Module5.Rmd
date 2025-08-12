@@ -174,7 +174,7 @@ For model specification you need:
 
 2. The arguments: the model parameter values set using `set_args()`.
 
-3. The engine: the underlying package the model should come from (e.g. “ranger” for the fast C++ implementation of Random Forest or randomForest for the original R implementation), set using `set_engine()`.
+3. The engine: the underlying package the model should come from (e.g. “ranger” for the fast C++ implementation of Random Forest or `randomForest` for the original R implementation), set using `set_engine()`.
 
 4. The mode: the type of prediction - since several packages can do both classification (binary/categorical prediction) and regression (continuous prediction), set using `set_mode()`.
 
@@ -268,7 +268,7 @@ rf_workflow <- workflow() %>%
   add_model(rf_model)
 
 #now we add trees to the grid
-rf_grid <- expand.grid(mtry = c(3, 4, 5), trees = c(100, 500))
+rf_grid <- expand.grid(mtry = c(3, 4, 5), trees = c(100, 500,1000))
 # extract results
 rf_tune_results2 <- rf_workflow %>%
   tune_grid(resamples = df_cv, #CV object
@@ -496,10 +496,15 @@ df_test %>%
   bind_cols(df_test) %>%
   accuracy(truth = diabetes, estimate = .pred_class)  # Accuracy
 
+test_results <- predict(final_fit, df_test, type = "prob") %>%
+  bind_cols(df_test %>% select(diabetes))  # event level
+
 # Calculate ROC curve data
-roc_data <- roc_curve(df_clean, truth = diabetes, .pred_neg)
+roc_data <- roc_curve(test_results, truth = diabetes, .pred_neg)
 
 # Plot ROC curve
-autoplot(roc_data)
+autoplot(roc_data) +  
+  ggtitle("ROC Curve for Diabetes Model") +
+  theme_minimal()
 
 ```
