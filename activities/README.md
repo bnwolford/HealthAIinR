@@ -24,6 +24,8 @@ Paired programming exercise: Application with sensitive data
 Goal: Exploratory data analysis with sensitive data and classic statistical methods  
 [Activity 2](https://github.com/bnwolford/HealthAIinR/blob/main/activities/Activity2.Rmd)
 
+[Answers](https://github.com/bnwolford/HealthAIinR/blob/main/activities/Activity2_filled.Rmd)) to the open ended exercises in Activity 2.
+
 Paired programming exercise: Machine Learning Project   
 Goal: Building a predictive model (e.g., classification or regression); Evaluating model performance; Model interpretation and visualization  
 [Activity 3](https://github.com/bnwolford/HealthAIinR/blob/main/activities/Activity3.Rmd)
