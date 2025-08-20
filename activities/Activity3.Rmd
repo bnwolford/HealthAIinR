@@ -1,5 +1,5 @@
 ---
-title: "Activity2"
+title: "Activity 3"
 output: html_document
 date: "2025-08-06"
 ---
@@ -42,4 +42,5 @@ sub<-df %>% select(DIAG_3_01, ADMIDATE, DISDATE,PSEUDO_HESID,MYDOB, SEX)
 glimpse(sub)
 
 ```
+
 
