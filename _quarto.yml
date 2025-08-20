@@ -3,7 +3,7 @@ project:
 
 website:
   title: "Health AI in R Workshop"
-  site-url: https://brookewolford.com/HealthAIinR
+  site-url: https://bnwolford.github.io/HealthAIinR/
   repo-url: https://github.com/bnwolford/HealthAIinR
   repo-actions: [edit, issue]
   navbar:
