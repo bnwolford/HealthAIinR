@@ -277,25 +277,25 @@
   {
     "objectID": "activities/Activity3.html",
     "href": "activities/Activity3.html",
-    "title": "Activity 3",
+    "title": "Activity2",
     "section": "",
     "text": "Use information from previous modules to perform ML/AI.\nYour goal is the following: * Choose a question you’re interested in * Build a predictive model (e.g., classification or regression); * Evaluate model performance * Create visualization * Interpret the model and findings\n\n##call libraries\nlibrary(c(dplyr,tidyr,readr,ggplot2))\n\n#remember to replace $USER\n\n#set directory path\ndata_dir&lt;-\"/mnt/work/workbench/$USER/artificial_hes_apc_202302_v1_sample/artificial_hes_apc_0102.csv\"\n\n#read in .csv\ndf&lt;-read_csv(data_dir)\n\nglimpse(df)\n\n#make a smaller dataset to work with; for example:\nsub&lt;-df %&gt;% select(DIAG_3_01, ADMIDATE, DISDATE,PSEUDO_HESID,MYDOB, SEX)\n\nglimpse(sub)",
     "crumbs": [
       "Home",
       "Activities",
-      "Activity 3"
+      "Activity2"
     ]
   },
   {
     "objectID": "activities/Activity3.html#activity-3",
     "href": "activities/Activity3.html#activity-3",
-    "title": "Activity 3",
+    "title": "Activity2",
     "section": "",
     "text": "Use information from previous modules to perform ML/AI.\nYour goal is the following: * Choose a question you’re interested in * Build a predictive model (e.g., classification or regression); * Evaluate model performance * Create visualization * Interpret the model and findings\n\n##call libraries\nlibrary(c(dplyr,tidyr,readr,ggplot2))\n\n#remember to replace $USER\n\n#set directory path\ndata_dir&lt;-\"/mnt/work/workbench/$USER/artificial_hes_apc_202302_v1_sample/artificial_hes_apc_0102.csv\"\n\n#read in .csv\ndf&lt;-read_csv(data_dir)\n\nglimpse(df)\n\n#make a smaller dataset to work with; for example:\nsub&lt;-df %&gt;% select(DIAG_3_01, ADMIDATE, DISDATE,PSEUDO_HESID,MYDOB, SEX)\n\nglimpse(sub)",
     "crumbs": [
       "Home",
       "Activities",
-      "Activity 3"
+      "Activity2"
     ]
   },
   {
