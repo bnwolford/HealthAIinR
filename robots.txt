@@ -1,1 +1,1 @@
-Sitemap: https://brookewolford.com/HealthAIinR/sitemap.xml
+Sitemap: https://bnwolford.github.io/HealthAIinR/sitemap.xml
