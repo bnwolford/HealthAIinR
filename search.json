@@ -373,25 +373,25 @@
   {
     "objectID": "modules/Module3_working.html",
     "href": "modules/Module3_working.html",
-    "title": "Module 3 Working Version",
+    "title": "Module 3 Blanks",
     "section": "",
     "text": "Content for this Module is derived from: * https://swcarpentry.github.io/r-novice-gapminder/08-plot-ggplot2.html * https://www.datanovia.com/en/lessons/ggplot-violin-plot/\nChatGPT was used in the creation of examples and explanations.\n\n\n\nBy the end of this session, learners will be able to: * Understand the grammar of graphics * Create basic visualizations using ggplot2 * Customize aesthetics, labels, and themes * Use facet_wrap() to explore subgroups\n\n\n\nThe “gg” in ggplot2 stands for grammar of graphics. The plots are built in layers and you can additively string together functions with + to add layers and customize your plots. The key part of making our plot is to tell ggplot how we want to visually represent the data. We do this by adding a new layer to the plot using one of the geom functions.\n\n#read in the data we used in Module 2\n\nusername&lt;-\"YOUR USERNAME HERE\"\npath&lt;-paste0(\"/mnt/work/workbench/\",username,\"/scratch/\",username,\"/data/\")\npath2&lt;-paste0(path,\"sample.csv\")\n\n\n\n# Start with the dataset and aesthetic mapping\n\n#Nothing appears — because no geometric layer is added yet!\n\n# Add a geometric layer: scatter plot\n\n#the plot will show up on the bottom right of your RStudio IDE",
     "crumbs": [
       "Home",
       "Lesson Modules",
-      "Module 3 Working Version"
+      "Module 3 Blanks"
     ]
   },
   {
     "objectID": "modules/Module3_working.html#module-3-data-visualization-with-ggplot2",
     "href": "modules/Module3_working.html#module-3-data-visualization-with-ggplot2",
-    "title": "Module 3 Working Version",
+    "title": "Module 3 Blanks",
     "section": "",
     "text": "Content for this Module is derived from: * https://swcarpentry.github.io/r-novice-gapminder/08-plot-ggplot2.html * https://www.datanovia.com/en/lessons/ggplot-violin-plot/\nChatGPT was used in the creation of examples and explanations.\n\n\n\nBy the end of this session, learners will be able to: * Understand the grammar of graphics * Create basic visualizations using ggplot2 * Customize aesthetics, labels, and themes * Use facet_wrap() to explore subgroups\n\n\n\nThe “gg” in ggplot2 stands for grammar of graphics. The plots are built in layers and you can additively string together functions with + to add layers and customize your plots. The key part of making our plot is to tell ggplot how we want to visually represent the data. We do this by adding a new layer to the plot using one of the geom functions.\n\n#read in the data we used in Module 2\n\nusername&lt;-\"YOUR USERNAME HERE\"\npath&lt;-paste0(\"/mnt/work/workbench/\",username,\"/scratch/\",username,\"/data/\")\npath2&lt;-paste0(path,\"sample.csv\")\n\n\n\n# Start with the dataset and aesthetic mapping\n\n#Nothing appears — because no geometric layer is added yet!\n\n# Add a geometric layer: scatter plot\n\n#the plot will show up on the bottom right of your RStudio IDE",
     "crumbs": [
       "Home",
       "Lesson Modules",
-      "Module 3 Working Version"
+      "Module 3 Blanks"
     ]
   },
   {
